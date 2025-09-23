@@ -100,12 +100,23 @@
 .popular_tag_head {
 	position: absolute;
 	top: 83%;
+	left: 50px;
 }
 
 .recommend_recipe_header{
 	font-size: 22px;
 	border-bottom: 1px dotted #9696a0;
 	margin-bottom: 10px;
+	display: flex;
+	padding-bottom: 5px;
+}
+
+.recommend_recipe_header p{
+  margin: 0 0 10px 12px;
+}
+
+.recommend_recipe_header img{
+	margin-left: 7px;
 }
 
 .content{

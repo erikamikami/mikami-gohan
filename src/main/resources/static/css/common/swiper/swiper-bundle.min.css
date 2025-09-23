@@ -256,7 +256,7 @@
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,.swiper-pagination-bullets.swiper-pagination-horizontal,.swiper-pagination-custom,.swiper-pagination-fraction {
-    bottom: 10px;
+    bottom: -6px;
     left: 0;
     width: 100%
 }

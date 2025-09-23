@@ -45,11 +45,14 @@
 
 <body>
   <span th:insert="common/header::frag_header"></span>
+  
+  <!-- TOPスワイパー 新着レシピ -->
   <div class="swiper">
     <div class="swiper-wrapper">
-      <img class="swiper-slide" alt="" th:src="@{/img/tc_pro_img__01.jpg}">
-      <img class="swiper-slide" alt="" th:src="@{/img/tc_pro_img__01 (1).jpg}">
-      <img class="swiper-slide" alt="" th:src="@{/img/tc_pro_img_TITANIUM_01.jpg}">
+     <div class="swiper-slide" th:each="recipes : ${recentlyRecipes}">
+        <img alt="" th:src="@{/img/recipe/} + ${recipes.id} + '.jpeg'">
+        <p th:text="${recipes.title}"></p>
+      </div>
     </div>
 
     <div class="swiper-pagination"></div>

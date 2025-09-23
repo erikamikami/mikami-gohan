@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/* 全ての文字にGoogleフォントを適用する */
+h1, h2, h3, h4, h5, p, ul, li, input, form, a, button, pre {
+	font-family: "Zen Maru Gothic", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+
+;
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration-line: none;
+	color: #222;
+}
+
+a:hover {
+	color: #aaa;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.btn {
+	text-align: center;
+	display: block;
+}
+
+.btn .btn_link {
+	color: #333;
+	text-align: center;
+	width: 200px;
+	padding: 10px;
+	border: solid;
+	border-width: 2px;
+	border-color: #999;
+	border-radius: 40px;
+	display: inline-block;
+}
+
+.btn .btn_link:hover {
+	color: #fff;
+	background-color: #222;
+	transition: 0.5s;
+}
+
+.last_ele {
+	margin-bottom: 50px;
+}
+
+@media screen and (max-width: 481px) {
+	/* 481px以下に適用されるCSS（スマホ用） */
+	#global_menu {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
+}

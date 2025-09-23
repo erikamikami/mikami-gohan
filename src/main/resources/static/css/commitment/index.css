@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+p {
+	text-align: left;
+	line-height: 27px;
+}
+
+.commit {
+	margin: 70px 0 110px;
+}
+
+.commit-txt {
+	margin: 32px 0;
+}
+
+.annotation {
+	font-size: 10px;
+}
+
+@media screen and (min-width: 991px) {
+	/* 991px以上に適用されるCSS（PC用） */
+	.commit-head {
+		background-color: #930000;
+		color: #fff;
+		padding: 30px;
+		text-align: left;
+		margin-right: 30%;
+	}
+	.commit-img {
+		display: flex;
+		flex-wrap: wrap;
+		margin-top: 20px;
+	}
+	.commit-img>img {
+		width: 50%;
+		justify-content: center;
+		padding: 1%;
+	}
+}
+
+@media screen and (max-width: 990px) {
+	/* 990px以下に適用されるCSS（スマホ用） */
+	.commit-head {
+		background-color: #930000;
+		color: #fff;
+		padding: 26px;
+		text-align: left;
+	}
+	.commit-img>img {
+    margin: 8px 0;
+  }
+}
+
+@media screen and (max-width: 481px) { /* 481px以下に適用されるCSS（スマホ用） */
+}

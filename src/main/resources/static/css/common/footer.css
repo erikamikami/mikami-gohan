@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.footer{
+	background-color: #eee;
+}
+
+ul ol li{
+	list-style: none;
+}
+
+.footer_list_li{
+	display: inline-flex;
+	padding: 20px 3px 5px;
+}
+
+.footer_list_li:not(.li1){
+	margin-left: 20px;
+}
+
+.footer_list{
+	text-align: center;
+}
+
+.copyright{
+	text-align: center;
+	padding: 20px 0;
+}

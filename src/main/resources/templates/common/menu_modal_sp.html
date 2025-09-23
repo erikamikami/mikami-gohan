@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+  <!-- ▼　共通 メニューモーダル(SP) ▼ -->
+  <span th:fragment="frag_menu_modal_sp">
+    <div class="fat-nav">
+      <div class="fat-nav__wrapper">
+        <ul>
+          <li>
+            <a th:href="@{/}">HOME</a>
+          </li>
+          <li>
+            <a th:href="@{/news}">お知らせ</a>
+          </li>
+          <li>
+            <a th:href="@{/about}">ラボについて</a>
+          </li>
+          <li>
+            <a th:href="@{/products}">製品について</a>
+          </li>
+          <li>
+            <a th:href="@{/commitment}">こだわり</a>
+          </li>
+          <li>
+            <a th:href="@{/inquiry}">問い合わせ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </span>
+  <!-- ▲　共通 メニューモーダル(SP) ▲ -->
+
+</body>
+</html>

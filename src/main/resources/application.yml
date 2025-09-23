@@ -6,6 +6,9 @@ spring:
     username: postgres
     password: postgres
     
+server:
+  port: 8081
+    
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

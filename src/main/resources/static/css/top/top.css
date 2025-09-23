@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+ul, ol, li {
+	list-style: none;
+}
+
+h2 {
+	text-align: center;
+}
+
+.content_head>div {
+	text-align: center;
+	font-size: 15px;
+	padding-bottom: 3px;
+	color: #FC1E01;
+	font-weight: 500;
+}
+
+.intro_txt {
+	text-align: center;
+}
+
+.more_btn {
+	text-align: center;
+}
+
+.ab_li {
+	margin-bottom: 2%;
+}
+
+.ab_ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	text-align: left;
+	padding-left: 0px;
+}
+
+.content {
+	margin: 100px 0;
+}
+
+h2 {
+	margin-bottom: 30px;
+}
+
+.intro_txt_bl {
+	margin-bottom: 30px;
+}
+
+.inq_sub_item_con {
+	text-align: center;
+}
+
+.inq_sub_item {
+	padding: 30px;
+	background-color: #eee;
+	margin: 20px 0;
+}
+
+.inq_sub_h3 {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.tel_number {
+	font-size: 35px;
+	font-weight: 500;
+}
+
+@media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
+	.ab_li {
+		width: 49%;
+	}
+}
+
+@media screen and (min-width: 991px) { /* 991px以上に適用されるCSS（PC用） */
+	.ab_li {
+		width: 32%;
+	}
+}

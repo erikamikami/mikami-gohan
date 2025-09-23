@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<title>エラーページ｜三上デンタルラボラトリー</title>
+<!-- bootstrap CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/common/common.css}">
+<link rel="stylesheet" th:href="@{/css/common/footer.css}">
+<link rel="stylesheet" th:href="@{/css/common/header.css}">
+<link rel="stylesheet" th:href="@{/css/common/contents.css}">
+
+<!-- Swiper -->
+<link rel="stylesheet" th:href="@{/css/common/swiper/swiper-bundle.min.css}" />
+<link rel="stylesheet" th:href="@{/css/common/swiper/swiper.css}" />
+
+<!-- menu -->
+<link rel="stylesheet" th:href="@{/css/common/jquery.fatNav.min.css}">
+
+<!-- fontawesome -->
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
+
+<link rel="stylesheet" th:href="@{/css/common/style.css}">
+<link rel="stylesheet" th:href="@{/css/inquiry/style.css}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+<script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+<span th:insert="common/header::frag_header"></span>
+  <div class="container">
+    <div class="contents">
+    <!-- menu -->
+    <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+
+    <div class="top_img">
+      <img alt="" th:src="@{/img/Inquiry-ic.jpg}">
+    </div>
+
+    <div class="top_contents">
+      <h1 class="h_ja">お探しのページが見つかりませんでした</h1>
+      <p class="h_txt">
+      お探しのページが見つかりませんでした。<br>
+      大変恐れ入りますが、トップページより<br>
+      再度ご利用いただけますよう、お願いいたします。<br>
+      </p>
+    </div>
+
+    <div class="btn in_h_btn">
+      <a class="btn_link" th:href="@{/}"><i class="fas fa-home"></i>HOME</a>
+    </div>
+    </div>
+    <div id="toTop" style="visibility: visible; opacity: 1; transition: 0.5s;"><div>
+    <img th:src="@{img/totop_icon.png}" alt="TOPへ戻る">
+    <style>
+    #toTop {
+      visibility:hidden;
+      opacity:0;
+    }
+    #toTop>div{
+      position:fixed;
+      z-index:9999;
+      bottom:50px;
+      right:8px;
+      width:65px;
+      height:65px;
+    }
+    </style>
+  </div>
+</div>
+  </div>
+  <span th:insert="common/footer::frag_footer"></span>
+  <!-- menu -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
+  <script>
+      $(function() {
+        $.fatNav();
+      });
+    </script>
+  <script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
+  <!-- slick -->
+  <script th:src="@{js/slick/slick.min.js}"></script>
+  <script th:src="@{js/slick/slick.js}"></script>
+  <script th:src="@{js/slick/custom.slick.js}"></script>
+  <script th:src="@{js/common/header.js}"></script>
+  <script th:src="@{js/common/totop.js}"></script>
+</body>
+</html>

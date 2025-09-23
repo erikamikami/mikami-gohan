@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+#global_menu {
+	position: absolute;
+	right: 37px;
+	top: 0px;
+}
+
+.header_contener {
+	font-size: 15px;
+	background: rgba(240, 240, 240, 0.5);
+	height: 100px;
+}
+
+.header_contener.is-show {
+	font-size: 15px;
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: rgba(240, 240, 240, 0.5);
+}
+
+.header_logo {
+	height: 100%;
+	padding: 15px 0;
+}
+
+@media screen and (max-width: 990px) {
+	/* 990px以下に適用されるCSS（スマホ用） */
+
+}
+
+@media screen and (max-width: 481px) {
+	/* 481px以下に適用されるCSS（スマホ用） */
+
+}

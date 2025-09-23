@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width" />
+<title>製品について｜三上デンタルラボラトリー</title>
+<!-- bootstrap CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<link rel="stylesheet" th:href="@{/css/common/common.css}">
+<link rel="stylesheet" th:href="@{/css/common/footer.css}">
+<link rel="stylesheet" th:href="@{/css/common/header.css}">
+<link rel="stylesheet" th:href="@{/css/common/contents.css}">
+<link rel="stylesheet" th:href="@{/css/common/toTop.css}">
+<link rel="stylesheet" th:href="@{/css/products/index.css}">
+
+<!-- Swiper -->
+<link rel="stylesheet"
+	th:href="@{/css/common/swiper/swiper-bundle.min.css}" />
+<link rel="stylesheet" th:href="@{/css/common/swiper/swiper.css}" />
+
+<!-- menu -->
+<link rel="stylesheet" th:href="@{/css/common/jquery.fatNav.min.css}">
+
+<!-- fontawesome -->
+<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+	rel="stylesheet">
+
+<link rel="stylesheet" th:href="@{/css/common/style.css}">
+<link rel="stylesheet" th:href="@{/css/inquiry/style.css}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP"
+	rel="stylesheet">
+<script src="https://kit.fontawesome.com/b02fe1bd6e.js"
+	crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<span th:insert="common/header::frag_header"></span>
+	<div class="container">
+		<div class="contents">
+			<!-- menu -->
+			<span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+
+			<div class="top_img">
+				<img alt="" th:src="@{/img/Inquiry-ic.jpg}">
+			</div>
+
+			<div class="top_contents">
+				<h1 class="h_en">PRODUCTS</h1>
+				<h1 class="h_ja">製品について</h1>
+				<p class="h_txt">
+					CAD/CAM冠の適合、「こんなものか....」とあきらめていませんか？<br> そんなことはありません。<br>
+					<br> セメントスペース、密着部分を数値化、支台歯に最適化させることで<br>
+					適合が良い、と思うレベルまで追い込むことが出来ます。<br> 脱離しやすいなどトラブルの原因になるようなルーズな適合では<br>
+					口腔内で安定した状態を継続できません。<br>
+					<br> 3Dへの不信感を抱えているのでしたら、是非一度、お試しください。
+				</p>
+			</div>
+
+			<div>
+				<div>
+					<!-- ▼アンカー▼ -->
+					<div class="anchor">
+						<ul class="anchor-ul">
+							<li class="anchor-li"><a href="#full-zirconia">
+									<div class="anchor-content">
+										<dl>
+											<dd>
+												<div class="anchor-detail">
+													<div class="anchor-text">
+														<p>フルジルコニア</p>
+													</div>
+													<div class="anchor-icon">
+														<p class="fa fa-chevron-down"></p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</div>
+							</a></li>
+							<li class="anchor-li"><a href="#zirconia-frame">
+									<div class="anchor-content">
+										<dl>
+											<dd>
+												<div class="anchor-detail">
+													<div class="anchor-text">
+														<p>
+															ジルコニアフレーム<br>(レイヤリング)
+														</p>
+													</div>
+													<div class="anchor-icon">
+														<p class="fa fa-chevron-down"></p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</div>
+							</a></li>
+							<li class="anchor-li"><a href="#zirconia-inlay">
+									<div class="anchor-content">
+										<dl>
+											<dd>
+												<div class="anchor-detail">
+													<div class="anchor-text">
+														<p>ジルコニアインレー</p>
+													</div>
+													<div class="anchor-icon">
+														<p class="fa fa-chevron-down"></p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</div>
+							</a></li>
+							<li class="anchor-li"><a href="#cadcam-crown">
+									<div class="anchor-content">
+										<dl>
+											<dd>
+												<div class="anchor-detail">
+													<div class="anchor-text">
+														<p>CAD/CAM冠</p>
+													</div>
+													<div class="anchor-icon">
+														<p class="fa fa-chevron-down"></p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</div>
+							</a></li>
+							<li class="anchor-li"><a href="#insurance">
+									<div class="anchor-content">
+										<dl>
+											<dd>
+												<div class="anchor-detail">
+													<div class="anchor-text">
+														<p>各種保険</p>
+													</div>
+													<div class="anchor-icon">
+														<p class="fa fa-chevron-down"></p>
+													</div>
+												</div>
+											</dd>
+										</dl>
+									</div>
+							</a></li>
+						</ul>
+					</div>
+					<!-- ▲アンカー▲ -->
+					<!-- ▼詳細▼ -->
+					<div>
+						<div id="full-zirconia">
+							<div class="detail-head">
+								<h1>フルジルコニア</h1>
+							</div>
+							<div class="detail-img">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+							</div>
+							<div class="detail-txt">
+								<p>
+									すべてジルコニア、すなわちオールジルコニア製の修復物です。<br>
+									非常に強靭でロングスパンブリッジにも対応できる強度を有しています。<br>
+									セレック、e-maxなどで破折してしまうようなケースにはおすすめです。<br>
+									<br> 単色からグラデーションハイトランスまで幅広く取り揃えておりますので、<br>
+									ご予算、症例にあわせてお選びください。<br> 透明感の強さに応じておすすめできない症例もございます。<br>
+									<br>​ ロングスパンのブリッジはフルマウスまで対応出来る強度があります。<br>
+									汎用性の広さも特徴の一つです。<br> オープンシステムのため材料を選びませんので、<br>
+									症例にあわせたジルコニアディスクの選択ができます。
+								</p>
+							</div>
+						</div>
+
+						<div id="zirconia-frame">
+							<div class="detail-head">
+								<h1>
+									ジルコニアフレーム<br>(レイヤリング)<br>
+								</h1>
+							</div>
+							<div class="detail-img">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+							</div>
+							<div class="detail-txt">
+								<p>
+									中間歯欠損など、周囲の歯との審美的な要件から<br> フルジルコニアでは対応しきれない場合がございます。<br>
+									<br> ジルコニアでフレームを作成、その上にポーセレンを築製したレイヤリングのご紹介です。<br>
+									<br> 細かいカスタマイズも可能で、<br>
+									患者様にも納得していただけるだけのクオリティを自信を持っておすすめできます。<br>
+									<br> ジルコニアでマメロン構造を再現していますので、リアルな色調も特徴です。
+								</p>
+							</div>
+						</div>
+
+						<div id="zirconia-inlay">
+							<div class="detail-head">
+								<h1>ジルコニアインレー</h1>
+							</div>
+							<div class="detail-img">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+							</div>
+							<div class="detail-txt">
+								<p>
+									ハイブリットやe-maxなどの充填物では<br> どうしてもチッピングや破折のリスクがついてまわります。<br>
+									<br> ジルコニアインレーには適合の不安が払拭できないというクライアント様もいらっしゃいますが、<br>
+									ソフト開発はそのような懸念も過去のものにしてしまうほどの進化を遂げています。<br>
+									<br> 強度重視ならば単色のジルコニアがおすすめです。
+								</p>
+							</div>
+						</div>
+
+						<div id="cadcam-crown">
+							<div class="detail-head">
+								<h1>CAD/CAM冠</h1>
+							</div>
+							<div class="detail-img">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+							</div>
+							<div class="detail-txt">
+								<p>
+									現在12種類のブロックに対応したCAMソフトを搭載しています。<br>
+									今後のCAD/CAM冠の適応拡大に伴い多様なマテリアルの使用も予想されています。<br>
+									<br> 症例に適したブロックを最適化されたCAMソフトで削りだすことによって、<br>
+									均一な精度のCAD/CAM冠のご提供に注力してまいります。<br>
+									<br> ＤＷＸ-51Dはベアリング入りギヤ駆動のスピンドル制御方式です。<br>
+									ワイヤー駆動のように伸び、たわみがありませんので、<br>
+									ハイブリットブロックのような粘りのあるマテリアルでも正確な削りだしが可能です。<br>
+									連結冠の製作も承っております。
+								</p>
+							</div>
+						</div>
+
+						<div id="insurance" style="scroll-margin-top: 1200px;">
+							<div class="detail-head">
+								<h1>各種保険</h1>
+							</div>
+							<div class="detail-img">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+								<img alt=""
+									src="https://wij-takumi.com/wp/wp-content/themes/ps-template-01/images/top2.png">
+							</div>
+							<div class="detail-txt">
+								<p>
+									保健のワックスアップも3Dで削りだしております。<br> なにかとトラブルが多い保健の仕事ですが、<br>
+									どれだけ忙しくてもコンピューターはミスはしません。<br>
+									<br> 毎日のお仕事ですので<br> 出来るだけ均一に、トラブル無く、を心がけてやらせていただきます。
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- ▲詳細▲ -->
+				</div>
+			</div>
+
+			<div class="btn in_h_btn">
+				<a class="btn_link" th:href="@{/}"><i class="fas fa-home"></i>HOME</a>
+			</div>
+		</div>
+		<span th:insert="common/toTop::frag_toTop"></span>
+	</div>
+	</div>
+	</div>
+	<span th:insert="common/footer::frag_footer"></span>
+	<!-- menu -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
+	<script th:src="@{/js/common/fatNav.js}"></script>
+	<script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
+	<!-- slick -->
+	<script th:src="@{/js/slick/slick.min.js}"></script>
+	<script th:src="@{/js/slick/slick.js}"></script>
+	<script th:src="@{/js/slick/custom.slick.js}"></script>
+	<script th:src="@{/js/common/header.js}"></script>
+	<script th:src="@{/js/common/totop.js}"></script>
+	<script th:src="@{/js/common/scroll_header_consideration.js}"></script>
+</body>
+</html>

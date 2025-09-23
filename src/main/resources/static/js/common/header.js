@@ -1,4 +1,4 @@
-const header = $("#common-header");
+/*const header = $("#common-header");
 
 $(window).on("scroll", function(){
 	let headerHeight = header.outerHeight();
@@ -9,4 +9,4 @@ $(window).on("scroll", function(){
 	}else{
 		header.removeClass("is-show");
 	}
-});
+});*/

@@ -44,7 +44,17 @@
 </head>
 
 <body>
+  <!-- 共通ヘッダー -->
   <span th:insert="common/header::frag_header"></span>
+  <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
+  <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+  <!-- 検索窓 -->
+  <form action="#" method="get" class="search-form">
+    <div class="search-set head-search">
+      <input name="" type="text" placeholder="レシピ名・食材で検索" class="search-input">
+      <input name="submit" type="image" src="/common/img/side_search_btn.gif" alt="検索" class="search-submit">
+    </div>
+  </form>
   
   <!-- TOPスワイパー 新着レシピ -->
   <div class="swiper">
@@ -60,32 +70,22 @@
     <div class="swiper-button-next"></div>
   </div>
 
-  <!-- menu -->
-  <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
-
   <div class="container">
+    
     <!-- お知らせ -->
     <div>
       <div class="news_header">
-        <div class="news_head">お知らせ</div>
+        <div class="news_head"><p class="popular_tag_head">人気のタグ一覧<p></div>
         <div class="news_more">
-          <a th:href="@{/news}"> お知らせ一覧 <i
-            class="fas fa-chevron-circle-right"
-            style="color: #aaa; margin-left: 5px;"></i>
-          </a>
+          <img alt="" src="/img/what_should_we_have_today.png">
         </div>
       </div>
       <div class="news_contents">
         <div class="news_list">
-          <div class="news_list_detail" th:each="news : ${newsList}">
-            <a th:href="@{/news/detail/} + ${news.id}">
-              <div class="news_date">
-                <span th:text="${news.displayDate}"></span>
-              </div>
-              <div class="news_topix">
-                <span th:text="${news.title}"></span>
-              </div>
-            </a>
+          <div class="news_list_detail" >
+          　　<div class="news_list_detail_child" th:each="tag : ${popularTags}">
+              <a href="#" th:text="${tag.tagName}"></a>
+            </div>
           </div>
         </div>
       </div>

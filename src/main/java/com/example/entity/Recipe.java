@@ -15,13 +15,13 @@ public class Recipe {
   private Integer id;
   private String title;
   private String memo;
-  private Integer tag_1;
-  private Integer tag_2;
-  private Integer tag_3;
-  private Integer tag_4;
-  private Integer tag_5;
-  private String create_date;
-  private boolean display_flg;
-  private boolean recommend_flg;
+  private Integer tag1;
+  private Integer tag2;
+  private Integer tag3;
+  private Integer tag4;
+  private Integer tag5;
+  private String createdate;
+  private boolean displayflg;
+  private boolean recommendflg;
 
 }

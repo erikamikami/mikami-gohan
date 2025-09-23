@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+.search-set{
+	text-align: center;
+}
+
+.search-input{
+	margin: 15px 0;
+	padding: 8px 15px;
+	width: 70%;
+}
+
+.search-submit{
+	margin: -16px;
+	margin-left: 6px;
+}

@@ -32,6 +32,10 @@ public class TopController {
     List<Tag> popularTags = tagService.getTenTags();
     model.addAttribute("popularTags", popularTags);
     
+    // おすすめのレシピ取得
+    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    model.addAttribute("recommendRecipe", recommendRecipe);
+    
     return "top";
   }
 }

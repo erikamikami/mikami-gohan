@@ -10,12 +10,18 @@ import com.example.entity.Recipe;
 
 @Service
 public class RecipeService {
-  
+
   @Autowired
   private RecipeMapper recipeMapper;
   
+  //作成日時が最近順に5件取得します
   public List<Recipe> getRecipeOrderByCreatedDateLimitFive() {
     return recipeMapper.getRecipeOrderByCreatedDateLimitFive();
+  }
+  
+  //おすすめで作成日時が最近順に6件取得します
+  public List<Recipe> getRecommendRecipeOrderByCreatedDateLimitSix() {
+    return recipeMapper.getRecommendRecipeOrderByCreatedDateLimitSix();
   }
 
 }

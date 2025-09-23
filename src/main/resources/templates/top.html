@@ -18,6 +18,7 @@
 <link rel="stylesheet" th:href="@{/css/common/toTop.css}">
 <link rel="stylesheet" th:href="@{/css/top/top.css}">
 <link rel="stylesheet" th:href="@{/css/news/index.css}">
+<link rel="stylesheet" th:href="@{/css/search/search.css}">
 
 <!-- Swiper -->
 <link rel="stylesheet"
@@ -48,11 +49,12 @@
   <span th:insert="common/header::frag_header"></span>
   <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
   <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+  
   <!-- 検索窓 -->
   <form action="#" method="get" class="search-form">
     <div class="search-set head-search">
       <input name="" type="text" placeholder="レシピ名・食材で検索" class="search-input">
-      <input name="submit" type="image" src="/common/img/side_search_btn.gif" alt="検索" class="search-submit">
+      <input name="submit" type="image" src="/img/search_icon.png" alt="検索" class="search-submit">
     </div>
   </form>
   
@@ -72,7 +74,7 @@
 
   <div class="container">
     
-    <!-- お知らせ -->
+    <!-- 人気のタグ一覧 -->
     <div>
       <div class="news_header">
         <div class="news_head"><p class="popular_tag_head">人気のタグ一覧<p></div>
@@ -91,163 +93,27 @@
       </div>
     </div>
 
-    <!-- ラボについて -->
+    <!-- おすすめレシピ -->
     <div class="content">
-      <a href="/about">
-        <div class="content_head">
-          <div>ABOUT LABO</div>
-          <h2>ラボについて</h2>
-        </div>
-        <div class="intro_txt_bl">
-          <p class="intro_txt">最新システムと熟練の技術で歯科技工物のあらゆるニーズにお応えします。</p>
-        </div>
-      </a>
+      <div class="recommend_recipe_header">
+        <p>おすすめレシピ<p>
+      </div>
       <div>
         <ul class="ab_ul">
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
-          </li>
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
-          </li>
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
-          </li>
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
-          </li>
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
-          </li>
-          <li class="ab_li"><img alt="" th:src="@{/img/about-p3.jpg}">
+          <li class="ab_li" th:each="recipe : ${recommendRecipe}">
+          <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
           </li>
         </ul>
       </div>
       <div class="btn">
-        <a class="btn_link" th:href="@{/about}"> MORE <i
-          class="fas fa-long-arrow-alt-right"></i>
+        <a class="btn_link" th:href="@{/about}"> 検索一覧 <i class="fas fa-long-arrow-alt-right"></i>
         </a>
       </div>
 
     </div>
 
-    <!-- 仕事 -->
-    <div class="content">
-      <a href="/products">
-        <div class="content_head">
-          <div>PRODUCTS</div>
-          <h2>製品について</h2>
-        </div>
-        <div class="intro_txt_bl">
-          <p class="intro_txt">患者さまにご満足いただける高品質な技工物をお作りします。</p>
-        </div>
-      </a>
-      <div>
-        <div class="section">
-          <div class="sliderArea slider">
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="btn">
-        <a class="btn_link" th:href="@{/products}"> MORE <i
-          class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
-
     </div>
 
-    <!-- こだわり -->
-    <div class="content">
-    <a href="/commitment">
-      <div class="content_head">
-        <div>COMMITMENT</div>
-        <h2>私たちのこだわり</h2>
-      </div>
-      <div class="intro_txt_bl">
-        <p class="intro_txt">​長年の技工の経験を生かしたこだわりがあります。</p>
-      </div>
-      <div>
-    </a>
-        <div class="section">
-          <div class="sliderArea slider">
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-            <div>
-              <img th:src="@{/img/about-p3.jpg}" alt="">
-              <p>ここに写真の説明文をいれます。ここに写真の説明文をいれます。ここに写真の説明文をいれます。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="btn">
-        <a class="btn_link" th:href="@{/commitment}"> MORE <i
-          class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- 問い合わせ -->
-    <div class="content">
-      <div class="content_head">
-        <div>INQUIRY</div>
-        <h2>お問い合わせ</h2>
-      </div>
-      <div class="inq_sub_item_con">
-        <div class="inq_sub_item">
-          <h3 class="inq_sub_h3">電話でお問い合わせ</h3>
-          <div class="number_area">
-            <p class="tel_number">
-              <i class="fas fa-phone"></i> <span class="tel_number">04-2994-9504</span>
-            </p>
-            <p class="tel_desc">
-              受付：平日 9:00～18:00 / 土曜 9:00～13:00 <br /> 休日：日曜・祝日
-            </p>
-          </div>
-        </div>
-
-        <div class="inq_sub_item">
-          <h3 class="inq_sub_h3">フォームでお問い合わせ</h3>
-          <div>
-            <div class="btn">
-              <a class="btn_link" th:href="@{/inquiry}"> MORE <i
-                class="fas fa-long-arrow-alt-right"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
   <span th:insert="common/toTop::frag_toTop"></span>
   <span th:insert="common/footer::frag_footer"></span>
   <!-- スライドショー -->

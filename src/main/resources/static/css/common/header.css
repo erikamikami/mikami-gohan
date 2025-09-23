@@ -8,7 +8,7 @@
 
 .header_contener {
 	font-size: 15px;
-	background: rgba(240, 240, 240, 0.5);
+	background: #414620;
 	height: 100px;
 }
 
@@ -24,15 +24,16 @@
 
 .header_logo {
 	height: 100%;
-	padding: 15px 0;
+	padding: 10px 10px 1px 30px;
 }
 
-@media screen and (max-width: 990px) {
-	/* 990px以下に適用されるCSS（スマホ用） */
-
+@media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
 }
 
 @media screen and (max-width: 481px) {
 	/* 481px以下に適用されるCSS（スマホ用） */
-
+	.header_logo {
+  height: 100%;
+  padding: 12px 10px 2px 15px;
+}
 }

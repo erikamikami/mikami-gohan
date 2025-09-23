@@ -8,4 +8,8 @@
 select id, title from recipe where display_flg = true order by created_date DESC limit 5;
 </select>
 
+<select id="getRecommendRecipeOrderByCreatedDateLimitSix" resultType="com.example.entity.Recipe">
+select id, title from recipe where display_flg = true and recommend_flg = true order by created_date DESC limit 6;
+</select>
+
 </mapper>

@@ -23,5 +23,10 @@ public class RecipeService {
   public List<Recipe> getRecommendRecipeOrderByCreatedDateLimitSix() {
     return recipeMapper.getRecommendRecipeOrderByCreatedDateLimitSix();
   }
+  
+  // id指定で1件のレシピ情報を取得する
+  public Recipe getRecipeById(Integer id) {
+    return recipeMapper.getRecipeById(id);
+  }
 
 }

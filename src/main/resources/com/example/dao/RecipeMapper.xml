@@ -12,4 +12,76 @@ select id, title from recipe where display_flg = true order by created_date DESC
 select id, title from recipe where display_flg = true and recommend_flg = true order by created_date DESC limit 6;
 </select>
 
+
+<resultMap id="detailRecieResultMap" type="com.example.entity.Recipe">
+    <id property="id" column="id"/>
+    <result property="title" column="title"/>
+    <result property="memo" column="memo"/>
+    <result property="tag1" column="tag_1" />
+    <result property="tag1Name" column="tag1_name"/>
+    <result property="tag2" column="tag_2" />
+    <result property="tag2Name" column="tag2_name"/>
+    <result property="tag3" column="tag_3" />
+    <result property="tag3Name" column="tag3_name"/>
+    <result property="tag4" column="tag_4" />
+    <result property="tag4Name" column="tag4_name"/>
+    <result property="tag5" column="tag_5" />
+    <result property="tag5Name" column="tag5_name"/>
+    
+    <association property="howTo" javaType="com.example.entity.HowTo">
+      <result property="howToNo1" column="how_to_no1"/>
+      <result property="howToNo2" column="how_to_no2"/>
+      <result property="howToNo3" column="how_to_no3"/>
+      <result property="howToNo4" column="how_to_no4"/>
+      <result property="howToNo5" column="how_to_no5"/>
+      <result property="howToNo6" column="how_to_no6"/>
+      <result property="howToNo7" column="how_to_no7"/>
+      <result property="howToNo8" column="how_to_no8"/>
+      <result property="howToNo9" column="how_to_no9"/>
+      <result property="howToNo10" column="how_to_no10"/>
+    </association>
+    
+    <collection property="materials" ofType="com.example.entity.Material">
+      <id property="id" column="matelial_id"/>
+      <result property="materialName" column="material_name"/>
+    </collection>
+    
+</resultMap>
+
+<select id="getRecipeById" parameterType="int" resultMap="detailRecieResultMap">
+select 
+  r.id, 
+  r.title, 
+  r.memo, 
+  t1.tag_name AS tag1_name, 
+  t2.tag_name AS tag2_name, 
+  t3.tag_name AS tag3_name, 
+  t4.tag_name AS tag4_name, 
+  t5.tag_name AS tag5_name,
+  m.id AS matelial_id,
+  m.material_name,
+  h.how_to_no1, 
+  h.how_to_no2, 
+  h.how_to_no3, 
+  h.how_to_no4, 
+  h.how_to_no5, 
+  h.how_to_no6, 
+  h.how_to_no7, 
+  h.how_to_no8, 
+  h.how_to_no9, 
+  h.how_to_no10 
+from recipe r
+left outer join tag t1 on r.tag_1 = t1.id 
+left outer join tag t2 on r.tag_2 = t2.id 
+left outer join tag t3 on r.tag_3 = t3.id 
+left outer join tag t4 on r.tag_4 = t4.id 
+left outer join tag t5 on r.tag_5 = t5.id 
+left outer join material m on r.id = m.recipe_id
+left outer join how_to h on r.id = h.recipe_id
+where r.id = #{id}
+and r.display_flg = true
+order by m.sort_order
+;
+</select>
+
 </mapper>

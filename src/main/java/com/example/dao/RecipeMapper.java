@@ -14,4 +14,7 @@ public interface RecipeMapper {
 
   // おすすめで作成日時が最近順に6件取得します
   public List<Recipe> getRecommendRecipeOrderByCreatedDateLimitSix();
+
+  // id指定で1件のレシピ情報を取得する
+  public Recipe getRecipeById(Integer id);
 }

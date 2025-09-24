@@ -1,0 +1,112 @@
+@charset "utf-8";
+
+/* ▼ 共通 ▼ */
+.container {
+	display: flex;
+	gap: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+main {
+	flex: 3;
+	background: #fff;
+	padding: 0 5px;
+}
+
+aside {
+	flex: 1;
+	background: #f9f9f9;
+	padding: 20px;
+	margin: 20px 0;
+}
+
+.contents {
+	padding: 10px;
+	
+}
+/* ▲ 共通 ▲ */
+.recipe_name {
+	padding: 8px;
+}
+
+.tag_names {
+	padding: 0 10px 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.tag_name {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #ccc;
+	border-radius: 17px;
+}
+
+.tag_name a{
+	padding: 10px 13px;
+}
+
+.materials_head {
+	display: flex;
+  align-items: center;
+  gap: 10px; 
+  border-bottom: 1px dotted #9696a0;
+  margin-bottom: 10px;
+}
+
+.materials_head h2 {
+	padding: 12px 0 10px;
+}
+
+.material_name {
+	padding-bottom: 5px;
+}
+
+.memo_head {
+	display: flex;
+  align-items: center;
+  gap: 10px; 
+  border-bottom: 1px dotted #9696a0;
+  margin-bottom: 10px;
+}
+
+.how_to_head {
+	display: flex;
+  align-items: center;
+  gap: 10px; 
+  border-bottom: 1px dotted #9696a0;
+  padding-bottom: 6px;
+  margin: 10px 0;
+}
+
+.how_to_detail {
+	padding-bottom: 15px;
+}
+
+.aside_content{
+	margin-bottom: 20px;
+}
+
+.recommend_recipe_ul {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-left: 0;
+	font-size: 13px; 
+}
+
+.recommend_recipe_li {
+	width: 49%;
+}
+
+@media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
+	.container {
+		flex-direction: column; /* スマホでは縦並び */
+	}
+}
+
+@media screen and (max-width: 481px) { /* 481px以下に適用されるCSS（スマホ用） */
+}

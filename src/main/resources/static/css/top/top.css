@@ -75,3 +75,6 @@ h2 {
 		width: 32%;
 	}
 }
+
+@media screen and (max-width: 481px) { /* 481px以下に適用されるCSS（スマホ用） */
+}

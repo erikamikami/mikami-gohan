@@ -84,4 +84,32 @@ order by m.sort_order
 ;
 </select>
 
+<select id="getRecipeLimitThirty" resultType="com.example.entity.Recipe">
+select id, title from recipe where display_flg = true order by created_date DESC limit 30;
+</select>
+
+<select id="searchByRecipeTitleOrMaterialName" resultType="com.example.entity.Recipe" parameterType="map">
+select
+  DISTINCT r.id,
+  r.title,
+  r.created_date
+from recipe AS r
+left join material AS m on r.id = m.recipe_id
+where 
+  r.display_flg = true
+  <if test="keywords != null and keywords.size() > 0">
+    AND (
+      <foreach collection="keywords" item="keyword" separator=" OR ">
+        r.title LIKE CONCAT('%', #{keyword}, '%')
+      </foreach>
+      OR
+      <foreach collection="keywords" item="keyword" separator=" OR ">
+        m.material_name LIKE CONCAT('%', #{keyword}, '%')
+      </foreach>
+    )
+  </if>
+order by r.created_date
+limit 30;
+</select>
+
 </mapper>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
-<title>みかみごはん</title>
+<title></title>
 <!-- bootstrap CSS only -->
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -16,9 +16,10 @@
 <link rel="stylesheet" th:href="@{/css/common/footer.css}">
 <link rel="stylesheet" th:href="@{/css/common/header.css}">
 <link rel="stylesheet" th:href="@{/css/common/toTop.css}">
-<link rel="stylesheet" th:href="@{/css/top/top.css}">
 <link rel="stylesheet" th:href="@{/css/news/index.css}">
 <link rel="stylesheet" th:href="@{/css/search/search.css}">
+<link rel="stylesheet" th:href="@{/css/search/index.css}">
+<link rel="stylesheet" th:href="@{/css/recipe/detail.css}">
 
 <!-- Swiper -->
 <link rel="stylesheet"
@@ -50,81 +51,52 @@
   <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
   <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
   
-  <!-- 検索窓 -->
-  <form th:action="@{/search}" method="get" class="search-form">
-    <div class="search-set head-search">
-      <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
-      <button type="submit" class="search-submit">
-        <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
-      </button>
-    </div>
-  </form>
-  
-  <!-- TOPスワイパー 新着レシピ -->
-  <div class="swiper">
-    <div class="swiper-wrapper">
-     <div class="swiper-slide" th:each="recipe : ${recentlyRecipes}">
-       <a th:href="@{/recipe/} + ${recipe.id}">
-         <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
-         <p th:text="${recipe.title}"></p>
-       </a>
+  <div class="container">
+    <main>
+      <!-- 検索窓 -->
+      <form th:action="@{/search}" method="get" class="search-form">
+        <div class="search-set head-search">
+          <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
+          <button type="submit" class="search-submit">
+            <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
+          </button>
+        </div>
+      </form>
+      
+      <!-- 検索結果 -->
+      <div>
+          <ul class="search_recipe_ul">
+            <li class="search_recipe_li" th:each="recipe : ${searchRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.id}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      
+    </main>
+    
+    <!-- サイドバー -->
+    <aside>
+      
+      <!-- おすすめレシピ -->
+      <div class="aside_content">
+        <div>
+          <h4>おすすめレシピ</h4>
+        </div>
+        <div>
+          <ul class="recommend_recipe_ul">
+            <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.id}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    </aside>
   </div>
 
-  <div class="container">
-    
-    <!-- 人気のタグ一覧 -->
-    <div>
-      <div class="news_header">
-        <div class="news_head">
-          <img class="popular_tag_head" alt="" src="/img/flg_icon.png" style="left: 8px">
-          <p class="popular_tag_head">人気のタグ一覧</p>
-        </div>
-        <div class="news_more">
-          <img alt="" src="/img/what_should_we_have_today.png">
-        </div>
-      </div>
-      <div class="news_contents">
-        <div class="news_list">
-          <div class="news_list_detail" >
-          　　<div class="news_list_detail_child" th:each="tag : ${popularTags}">
-              <a href="#" th:text="${tag.tagName}"></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- おすすめレシピ -->
-    <div class="content">
-      <div class="recommend_recipe_header">
-        <img src="/img/fork_knife.png" >
-        <p>おすすめレシピ<p>
-      </div>
-      <div>
-        <ul class="ab_ul">
-          <li class="ab_li" th:each="recipe : ${recommendRecipe}">
-            <a th:href="@{/recipe/} + ${recipe.id}">
-              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="btn">
-        <a class="btn_link" th:href="@{/search}"> 検索一覧 <i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
-
-    </div>
-
-    </div>
-
-  <span th:insert="common/toTop::frag_toTop"></span>
   <span th:insert="common/footer::frag_footer"></span>
   <!-- スライドショー -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

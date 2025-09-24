@@ -1,8 +1,8 @@
 package com.example.dao;
 
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.example.entity.Recipe;
 
@@ -17,4 +17,10 @@ public interface RecipeMapper {
 
   // id指定で1件のレシピ情報を取得する
   public Recipe getRecipeById(Integer id);
+  
+  // 作成日順で 30件取得する
+  public List<Recipe> getRecipeLimitThirty();
+  
+  // レシピ名か材料名であいまい検索 30件取得する
+  public List<Recipe> searchByRecipeTitleOrMaterialName(@Param("keywords") List<String> keywords);
 }

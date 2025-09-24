@@ -23,4 +23,7 @@ public interface RecipeMapper {
   
   // レシピ名か材料名であいまい検索 30件取得する
   public List<Recipe> searchByRecipeTitleOrMaterialName(@Param("keywords") List<String> keywords);
+  
+  // タグ名で検索する。30件取得する。
+  public List<Recipe> searchByTagName(@Param("tags") List<String> tags);
 }

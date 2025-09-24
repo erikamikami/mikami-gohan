@@ -93,7 +93,7 @@
         <div class="news_list">
           <div class="news_list_detail" >
           　　<div class="news_list_detail_child" th:each="tag : ${popularTags}">
-              <a href="#" th:text="${tag.tagName}"></a>
+              <a th:href="'/search?tag=' + ${tag.tagName}" th:text="${tag.tagName}"></a>
             </div>
           </div>
         </div>

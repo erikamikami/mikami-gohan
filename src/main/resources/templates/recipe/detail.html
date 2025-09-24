@@ -65,7 +65,7 @@
       <!-- タグ -->
       <div class="tag_names">
         <div class="tag_name" th:each="tagName, iterStat : ${recipe.tagNameList}" th:if="${tagName != null and tagName != ''}">
-          <a th:href="@{#}" th:text="'#' + ${tagName}">#タグ名</a>
+          <a th:href="'/search?tag=' + ${tagName}" th:text="'#' + ${tagName}">#タグ名</a>
         </div>
       </div>
     </div>

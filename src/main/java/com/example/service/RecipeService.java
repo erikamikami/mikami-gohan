@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,11 @@ public class RecipeService {
     }
     
     return recipeMapper.searchByRecipeTitleOrMaterialName(searchKeyword);
+  }
+  
+  // タグ名で検索する。30件取得する。
+  public List<Recipe> searchByTagName(List<String> tags){
+    return recipeMapper.searchByTagName(tags);
   }
 
 }

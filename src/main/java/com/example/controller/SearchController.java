@@ -19,7 +19,8 @@ public class SearchController {
   private RecipeService recipeService;
 
   @RequestMapping("")
-  public String search(@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
+  public String search(@RequestParam(value = "keyword", required = false) String keyword,
+      @RequestParam(value = "tag", required = false) List<String> tag,
       Model model) {
     // おすすめレシピの取得
     List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
@@ -30,8 +31,13 @@ public class SearchController {
       List<Recipe> searchRecipe = recipeService.searchByRecipeTitleOrMaterialName(keyword);
       model.addAttribute("searchRecipe", searchRecipe);
       return "/search/index";
-   // 検索条件なしの場合
-    } else { 
+    // タグでの検索だった場合
+    } else if(tag != null) {
+      List<Recipe> searchRecipe = recipeService.searchByTagName(tag);
+      model.addAttribute("searchRecipe", searchRecipe);
+      return "/search/index";
+    // 検索条件なしの場合
+    } else {
       List<Recipe> searchRecipe = recipeService.getRecipeLimitThirty();
       model.addAttribute("searchRecipe", searchRecipe);
       return "/search/index";

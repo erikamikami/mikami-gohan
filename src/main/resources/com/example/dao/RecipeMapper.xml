@@ -112,4 +112,27 @@ order by r.created_date
 limit 30;
 </select>
 
+<select id="searchByTagName" resultType="com.example.entity.Recipe" parameterType="map">
+select 
+  r.id,
+  r.title,
+  r.created_date
+from recipe r
+left outer join tag t1 on r.tag_1 = t1.id and t1.display_flg = true
+left outer join tag t2 on r.tag_2 = t2.id and t2.display_flg = true
+left outer join tag t3 on r.tag_3 = t3.id and t3.display_flg = true
+left outer join tag t4 on r.tag_4 = t4.id and t4.display_flg = true
+left outer join tag t5 on r.tag_5 = t5.id and t5.display_flg = true
+where 
+  <foreach collection="tags" item="tag" separator=" OR ">
+  t1.tag_name like CONCAT('%', #{tag}, '%')
+  or t2.tag_name like CONCAT('%', #{tag}, '%')
+  or t3.tag_name like CONCAT('%', #{tag}, '%')
+  or t4.tag_name like CONCAT('%', #{tag}, '%')
+  or t5.tag_name like CONCAT('%', #{tag}, '%')
+  </foreach>
+order by r.created_date
+limit 30;
+</select>
+
 </mapper>

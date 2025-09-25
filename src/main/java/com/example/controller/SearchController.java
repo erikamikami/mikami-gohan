@@ -1,6 +1,7 @@
 package com.example.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,16 +26,19 @@ public class SearchController {
     // おすすめレシピの取得
     List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
-
+    
     // 検索窓への入力があった場合
     if (keyword != null && keyword != "") {
       List<Recipe> searchRecipe = recipeService.searchByRecipeTitleOrMaterialName(keyword);
       model.addAttribute("searchRecipe", searchRecipe);
+      model.addAttribute("keyword", keyword);
       return "/search/index";
     // タグでの検索だった場合
     } else if(tag != null) {
       List<Recipe> searchRecipe = recipeService.searchByTagName(tag);
       model.addAttribute("searchRecipe", searchRecipe);
+      String searchTags = tag.stream().collect(Collectors.joining(", "));
+      model.addAttribute("searchTags", searchTags);
       return "/search/index";
     // 検索条件なしの場合
     } else {

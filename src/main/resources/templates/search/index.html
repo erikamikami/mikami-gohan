@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
-<title></title>
+<title th:if="${keyword != null and keyword != ''}" th:text="${keyword} + 'の検索結果 | みかみごはん'"></title>
+<title th:if="${searchTags != null and searchTags != ''}" th:text="${searchTags} + 'の検索結果 | みかみごはん'"></title>
+<title th:if="${searchTags == null or searchTags == '' or searchTags == null or searchTags == ''}">検索一覧 | みかみごはん</title>
 <!-- bootstrap CSS only -->
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"

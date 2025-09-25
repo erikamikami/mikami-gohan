@@ -19,9 +19,9 @@ public class RecipeController {
   private RecipeService recipeService;
 
   @RequestMapping("{id}")
-  public String detail(@PathVariable("id") String id, Model model) {
+  public String detail(@PathVariable("id") int id, Model model) {
     // レシピ詳細 取得
-    Recipe recipe = recipeService.getRecipeById(Integer.parseInt(id));
+    Recipe recipe = recipeService.getRecipeById(id);
     if (recipe == null) {
       return "error/404";
     }

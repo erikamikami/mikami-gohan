@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 .fat-nav, .hamburger__icon, .hamburger__icon:after, .hamburger__icon:before
 	{
 	-moz-transition-duration: .4s;
@@ -10,7 +12,7 @@
 	width: 55px;
 	height: 50px;
 	position: absolute;
-	top: 25px;
+	top: 35px;
 	right: 0;
 	z-index: 10000;
 	padding: 12px;
@@ -23,7 +25,7 @@
 }
 
 @media screen and (min-width: 482px) {
-	/* 482px莉･荳翫↓驕ｩ逕ｨ縺輔ｌ繧気SS�ｼ�PC逕ｨ�ｼ� */
+	/* 482px以下に適用されるCSS（スマホ用） */
 	.hamburger {
 		display: none;
 	}

@@ -63,6 +63,14 @@
         </div>
       </form>
       
+      <!-- 検索キーワード -->
+      <div th:if="${keyword != null and keyword != ''}">
+        <p th:text="'「' + ${keyword} + '」の検索結果'"></p>
+      </div>
+      <div th:if="${searchTags != null and searchTags != ''}">
+        <p th:text="'タグ名「' + ${searchTags} + '」の検索結果'"></p>
+      </div>
+      
       <!-- 検索結果 -->
       <div>
           <ul class="search_recipe_ul">

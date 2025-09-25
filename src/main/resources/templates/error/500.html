@@ -51,34 +51,12 @@
       <a class="btn_link" th:href="@{/}"><i class="fas fa-home"></i>HOME</a>
     </div>
     </div>
-    <div id="toTop" style="visibility: visible; opacity: 1; transition: 0.5s;"><div>
-    <img th:src="@{img/totop_icon.png}" alt="TOPへ戻る">
-    <style>
-    #toTop {
-      visibility:hidden;
-      opacity:0;
-    }
-    #toTop>div{
-      position:fixed;
-      z-index:9999;
-      bottom:50px;
-      right:8px;
-      width:65px;
-      height:65px;
-    }
-    </style>
-  </div>
-</div>
   </div>
   <span th:insert="common/footer::frag_footer"></span>
   <!-- menu -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
-  <script>
-      $(function() {
-        $.fatNav();
-      });
-    </script>
+  <script th:src="@{/js/common/fatNav.js}"></script>
   <script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
   <!-- slick -->
   <script th:src="@{js/slick/slick.min.js}"></script>

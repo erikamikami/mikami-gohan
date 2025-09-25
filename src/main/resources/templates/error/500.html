@@ -4,52 +4,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
 <title>エラーページ｜みかみごはん</title>
+
 <!-- bootstrap CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/common/common.css}">
-<link rel="stylesheet" th:href="@{/css/common/footer.css}">
-<link rel="stylesheet" th:href="@{/css/common/header.css}">
-<link rel="stylesheet" th:href="@{/css/common/contents.css}">
-
-<!-- Swiper -->
-<link rel="stylesheet" th:href="@{/css/common/swiper/swiper-bundle.min.css}" />
-<link rel="stylesheet" th:href="@{/css/common/swiper/swiper.css}" />
-
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+  crossorigin="anonymous">
 <!-- menu -->
 <link rel="stylesheet" th:href="@{/css/common/jquery.fatNav.min.css}">
-
 <!-- fontawesome -->
 <link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet">
-
-<link rel="stylesheet" th:href="@{/css/common/style.css}">
-<link rel="stylesheet" th:href="@{/css/inquiry/style.css}">
-
+<script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
+<!-- google font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
+<link
+  href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap"
+  rel="stylesheet">
+<!-- myCSS -->
+<link rel="stylesheet" th:href="@{/css/common/common.css}">
+<link rel="stylesheet" th:href="@{/css/common/header.css}">
+<link rel="stylesheet" th:href="@{/css/common/footer.css}">
+<link rel="stylesheet" th:href="@{/css/error/error.css}">
 </head>
 
 <body>
-<span th:insert="common/header::frag_header"></span>
+  <span th:insert="common/header::frag_header"></span>
   <div class="container">
     <div class="contents">
-    <!-- menu -->
-    <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+      <!-- menu -->
+      <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
 
-    <div class="top_contents">
-      <h1 class="h_ja">システムエラーが発生しました。</h1>
-      <img alt="" src="/img/sorry.png" style="margin:20px 0">
-      <p class="h_txt">
-      ただいまシステムに不具合が発生しています。<br>
-      大変恐れ入りますが、しばらくしてから再度お試しください。<br>
-      </p>
-    </div>
-
-    <div class="btn in_h_btn">
-      <a class="btn_link" th:href="@{/}"><i class="fas fa-home"></i>HOME</a>
-    </div>
+      <div class="error_contents">
+        <h1 class="error_content">システムエラーが発生しました。</h1>
+        <img class="error_content" src="/img/sorry.png" alt="sorry" >
+        <p class="error_content">
+          ただいまシステムに不具合が発生しています。<br>
+          恐れ入りますが、しばらくしてから再度お試しください。<br>
+        </p>
+      </div>
+      
+      <div class="error_contents">
+        <div class="btn in_h_btn">
+          <a class="btn_link" th:href="@{/}"><i class="fas fa-home"></i>HOME</a>
+        </div>
+      </div>
     </div>
   </div>
   <span th:insert="common/footer::frag_footer"></span>
@@ -58,11 +58,5 @@
   <script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
   <script th:src="@{/js/common/fatNav.js}"></script>
   <script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
-  <!-- slick -->
-  <script th:src="@{js/slick/slick.min.js}"></script>
-  <script th:src="@{js/slick/slick.js}"></script>
-  <script th:src="@{js/slick/custom.slick.js}"></script>
-  <script th:src="@{js/common/header.js}"></script>
-  <script th:src="@{js/common/totop.js}"></script>
 </body>
 </html>

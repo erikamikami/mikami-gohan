@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+.error_contents{
+	text-align: center;
+	margin: 20px 0;
+}
+
+.error_content{
+	margin-bottom: 30px;
+}

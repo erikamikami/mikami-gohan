@@ -8,6 +8,33 @@ h2 {
 	text-align: center;
 }
 
+/* ▼ 共通 ▼ */
+.container {
+  display: flex;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main {
+  flex: 3;
+  background: #fff;
+  padding: 0 5px;
+}
+
+aside {
+  flex: 1;
+  background: #f9f9f9;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.contents {
+  padding: 10px;
+  
+}
+/* ▲ 共通 ▲ */
+
 .content_head>div {
 	text-align: center;
 	font-size: 15px;
@@ -68,6 +95,9 @@ h2 {
 	.ab_li {
 		width: 49%;
 	}
+	.container {
+    flex-direction: column; /* スマホでは縦並び */
+  }
 }
 
 @media screen and (min-width: 991px) { /* 991px以上に適用されるCSS（PC用） */

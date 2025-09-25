@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width" />
-<title>みかみごはん</title>
+<title>本サイトについて | みかみごはん</title>
 <!-- bootstrap CSS only -->
 <link
   href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -16,9 +16,10 @@
 <link rel="stylesheet" th:href="@{/css/common/footer.css}">
 <link rel="stylesheet" th:href="@{/css/common/header.css}">
 <link rel="stylesheet" th:href="@{/css/common/toTop.css}">
-<link rel="stylesheet" th:href="@{/css/top/top.css}">
 <link rel="stylesheet" th:href="@{/css/news/index.css}">
 <link rel="stylesheet" th:href="@{/css/search/search.css}">
+<link rel="stylesheet" th:href="@{/css/recipe/detail.css}">
+<link rel="stylesheet" th:href="@{/css/about/index.css}">
 
 <!-- Swiper -->
 <link rel="stylesheet"
@@ -50,80 +51,68 @@
   <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
   <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
   
-  <!-- 検索窓 -->
-  <form th:action="@{/search}" method="get" class="search-form">
-    <div class="search-set head-search">
-      <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
-      <button type="submit" class="search-submit">
-        <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
-      </button>
-    </div>
-  </form>
-  
-  <!-- TOPスワイパー 新着レシピ -->
-  <div class="swiper">
-    <div class="swiper-wrapper">
-     <div class="swiper-slide" th:each="recipe : ${recentlyRecipes}">
-       <a th:href="@{/recipe/} + ${recipe.id}">
-         <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
-         <p th:text="${recipe.title}"></p>
-       </a>
-      </div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
-  </div>
-
   <div class="container">
     <main>
-    <!-- 人気のタグ一覧 -->
-    <div>
-      <div class="news_header">
-        <div class="news_head">
-          <img class="popular_tag_head" alt="" src="/img/flg_icon.png" style="left: 8px">
-          <p class="popular_tag_head">人気のタグ一覧</p>
-        </div>
-        <div class="news_more">
-          <img alt="" src="/img/what_should_we_have_today.png">
-        </div>
+      <!-- ファーストビュー -->
+      <div>
+        <h1>本サイトに訪問いただき、<br>ありがとうございます。</h1>
       </div>
-      <div class="news_contents">
-        <div class="news_list">
-          <div class="news_list_detail" >
-          　　<div class="news_list_detail_child" th:each="tag : ${popularTags}">
-              <a th:href="'/search?tag=' + ${tag.tagName}" th:text="${tag.tagName}"></a>
-            </div>
-          </div>
-        </div>
+      <div class="thankyou_img">
+        <img alt="" src="/img/thankyou.png">      
       </div>
-    </div>
-
-    <!-- おすすめレシピ -->
-    <div class="content">
-      <div class="recommend_recipe_header">
-        <img src="/img/fork_knife.png" >
-        <p>おすすめレシピ<p>
+      <!-- 管理人について -->
+      <div class="head">
+        <img alt="" src="/img/flour.png">
+        <h2>管理人について</h2>
       </div>
       <div>
-        <ul class="ab_ul">
-          <li class="ab_li" th:each="recipe : ${recommendRecipe}">
-            <a th:href="@{/recipe/} + ${recipe.id}">
-              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
-            </a>
-          </li>
-        </ul>
+        <p>管理人のみかみです。<br>
+        普段から料理をよくするのですが、
+        自分専用のレシピサイトがほしくて開設しました。<br><br>
+        普段はIT企業でエンジニアとして働いており、<br>
+        本サイトも自身で開発、改修しております。</p>
       </div>
-      <div class="btn">
-        <a class="btn_link" th:href="@{/search}"> 検索一覧 <i class="fas fa-long-arrow-alt-right"></i>
+      
+      <!-- 本サイトについて -->
+      <div class="head">
+        <img alt="" src="/img/flour.png">
+        <h2>本サイトについて</h2>
+      </div>
+      <div>
+        <p>このサイトは誰でもレシピの検索、閲覧ができます。<br>
+        ご自由にお使いください。<br><br>
+        ※気まぐれで改修、更新をします。
+        </p>
+      </div>
+      
+      <!-- 注意事項 -->
+      <div>
+        <p>
+        管理人はズボラなので、材料や調味料の計量をしません。<br>
+        ですので、このサイトでも計量についての記載はしておりません。<br><br>
+        濃い目の味が好きな方、薄めの味が好きな方、<br>
+        大人数用、少人数用作りたい方、<br>
+        それぞれの好みやシチュエーションに合わせて、<br>
+        いい意味でテキトーに作ってみてください。
+        </p>
+      </div>
+      
+      <!-- SNS -->
+      <div class="head">
+        <img alt="" src="/img/flour.png">
+        <h2>SNS</h2>
+      </div>
+      <div>
+        <p>SNSも随時更新中です。</p>
+        <a href="https://www.instagram.com/mkm_gohan_" target="__blank">
+          <img alt="" src="/img/instagram_log.png">
         </a>
       </div>
-
-    </div>
     </main>
+    
+    <!-- サイドバー -->
     <aside>
-      <!-- 検索 -->
+    　　<!-- 検索 -->
       <div class="aside_content">
         <div>
           <h4>レシピ名・食材で検索</h4>
@@ -132,7 +121,7 @@
           <!-- 検索窓 -->
           <form th:action="@{/search}" method="get" class="search-form">
             <div class="search-set head-search">
-              <input name="keyword" type="text" placeholder="検索" class="search-input">
+              <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
               <button type="submit" class="search-submit">
                 <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
               </button>
@@ -140,10 +129,25 @@
           </form>
         </div>
       </div>
+      
+      <!-- おすすめレシピ -->
+      <div class="aside_content">
+        <div>
+          <h4>おすすめレシピ</h4>
+        </div>
+        <div>
+          <ul class="recommend_recipe_ul">
+            <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.id}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </aside>
-    </div>
+  </div>
 
-  <span th:insert="common/toTop::frag_toTop"></span>
   <span th:insert="common/footer::frag_footer"></span>
   <!-- スライドショー -->
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>

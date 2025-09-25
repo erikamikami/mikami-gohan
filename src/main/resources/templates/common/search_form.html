@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+	<!-- ▼　共通 検索窓 ▼ -->
+		<form th:fragment="frag_search_form" th:action="@{/search}" method="get" class="search-form">
+			<div class="search-set head-search">
+				<input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
+				<button type="submit" class="search-submit">
+					<img src="/img/search_icon.png" alt="検索" class="search-submit_img">
+				</button>
+			</div>
+		</form>
+	<!-- ▲　共通 検索窓 ▲ -->
+</body>
+</html>

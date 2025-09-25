@@ -54,14 +54,7 @@
   <div class="container">
     <main>
       <!-- 検索窓 -->
-      <form th:action="@{/search}" method="get" class="search-form">
-        <div class="search-set head-search">
-          <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
-          <button type="submit" class="search-submit">
-            <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
-          </button>
-        </div>
-      </form>
+      <span th:insert="common/search_form::frag_search_form"></span>
       
       <!-- 検索キーワード -->
       <div th:if="${keyword != null and keyword != ''}">

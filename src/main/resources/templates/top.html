@@ -49,14 +49,7 @@
   <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
   
   <!-- 検索窓 -->
-  <form th:action="@{/search}" method="get" class="search-form">
-    <div class="search-set head-search">
-      <input name="keyword" type="text" placeholder="レシピ名・食材で検索" class="search-input">
-      <button type="submit" class="search-submit">
-        <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
-      </button>
-    </div>
-  </form>
+  <span th:insert="common/search_form::frag_search_form"></span>
   
   <!-- TOPスワイパー 新着レシピ -->
   <div class="swiper">
@@ -128,14 +121,7 @@
         </div>
         <div>
           <!-- 検索窓 -->
-          <form th:action="@{/search}" method="get" class="search-form">
-            <div class="search-set head-search">
-              <input name="keyword" type="text" placeholder="検索" class="search-input">
-              <button type="submit" class="search-submit">
-                <img src="/img/search_icon.png" alt="検索" class="search-submit_img">
-              </button>
-            </div>
-          </form>
+          <span th:insert="common/search_form::frag_search_form"></span>
         </div>
       </div>
     </aside>

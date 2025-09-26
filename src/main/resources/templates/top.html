@@ -1,52 +1,17 @@
-<!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" />
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<!-- 個別タイトル -->
+<th:block layout:fragment="pageTitle">
 <title>みかみごはん</title>
-<!-- bootstrap CSS only -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-  crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/common/common.css}">
-<link rel="stylesheet" th:href="@{/css/common/footer.css}">
-<link rel="stylesheet" th:href="@{/css/common/header.css}">
-<link rel="stylesheet" th:href="@{/css/common/toTop.css}">
+</th:block>
+
+<!-- 個別CSS -->
+<th:block layout:fragment="pageStyles">
 <link rel="stylesheet" th:href="@{/css/top/top.css}">
-<link rel="stylesheet" th:href="@{/css/news/index.css}">
-<link rel="stylesheet" th:href="@{/css/search/search.css}">
+</th:block>
 
-<!-- Swiper -->
-<link rel="stylesheet"
-  th:href="@{/css/common/swiper/swiper-bundle.min.css}" />
-<link rel="stylesheet" th:href="@{/css/common/swiper/swiper.css}" />
 
-<!-- menu -->
-<link rel="stylesheet" th:href="@{/css/common/jquery.fatNav.min.css}">
-<!-- fontawesome -->
-<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-  rel="stylesheet">
-<!-- slick -->
-<link rel="stylesheet" th:href="@{css/slick/slick.css}">
-<link rel="stylesheet" th:href="@{css/slick/slick-theme.css}">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/b02fe1bd6e.js"
-  crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <!-- 共通ヘッダー -->
-  <span th:insert="common/header::frag_header"></span>
-  <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
-  <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
+<th:block layout:fragment="content">
   
   <!-- 検索窓 -->
   <span th:insert="common/search_form::frag_search_form"></span>
@@ -71,19 +36,19 @@
     <main>
     <!-- 人気のタグ一覧 -->
     <div>
-      <div class="news_header">
-        <div class="news_head">
+      <div class="tag_header">
+        <div class="tag_head">
           <img class="popular_tag_head" alt="" src="/img/flg_icon.png" style="left: 8px">
           <p class="popular_tag_head">人気のタグ一覧</p>
         </div>
-        <div class="news_more">
+        <div>
           <img alt="" src="/img/what_should_we_have_today.png">
         </div>
       </div>
-      <div class="news_contents">
-        <div class="news_list">
-          <div class="news_list_detail" >
-          　　<div class="news_list_detail_child" th:each="tag : ${popularTags}">
+      <div class="tag_contents">
+        <div class="tag_list">
+          <div class="tag_list_detail" >
+          　　<div class="tag_list_detail_child" th:each="tag : ${popularTags}">
               <a th:href="'/search?tag=' + ${tag.tagName}" th:text="${tag.tagName}"></a>
             </div>
           </div>
@@ -98,8 +63,8 @@
         <p>おすすめレシピ<p>
       </div>
       <div>
-        <ul class="ab_ul">
-          <li class="ab_li" th:each="recipe : ${recommendRecipe}">
+        <ul class="recommend_recipe_ul">
+          <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
             <a th:href="@{/recipe/} + ${recipe.id}">
               <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
             </a>
@@ -110,8 +75,8 @@
         <a class="btn_link" th:href="@{/search}"> 検索一覧 <i class="fas fa-long-arrow-alt-right"></i>
         </a>
       </div>
-
     </div>
+    
     </main>
     <aside>
       <!-- 検索 -->
@@ -126,23 +91,5 @@
       </div>
     </aside>
     </div>
-
-  <span th:insert="common/toTop::frag_toTop"></span>
-  <span th:insert="common/footer::frag_footer"></span>
-  <!-- スライドショー -->
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <script th:src="@{js/common/swiper.js}"></script>
-  
-  <!-- menu -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
-  <script th:src="@{/js/common/fatNav.js}"></script>
-  <script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
-  <!-- slick -->
-  <script th:src="@{js/slick/slick.min.js}"></script>
-  <script th:src="@{js/slick/slick.js}"></script>
-  <script th:src="@{js/slick/custom.slick.js}"></script>
-  <script th:src="@{js/common/totop.js}"></script>
-</body>
-</html>
+  </th:block>
+</div>

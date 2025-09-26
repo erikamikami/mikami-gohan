@@ -7,9 +7,8 @@ h1, h2, h3, h4, h5, p, ul, li, input, form, a, button, pre {
 	font-style: normal;
 }
 
-;
-li {
-	list-style: none;
+ul, ol, li {
+  list-style: none;
 }
 
 a {

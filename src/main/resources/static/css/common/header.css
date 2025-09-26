@@ -34,7 +34,7 @@
 @media screen and (max-width: 481px) {
 	/* 481px以下に適用されるCSS（スマホ用） */
 	.header_logo {
-  height: 100%;
-  padding: 12px 10px 2px 15px;
-}
+		height: 100%;
+		padding: 12px 10px 2px 15px;
+	}
 }

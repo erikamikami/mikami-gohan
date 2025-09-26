@@ -4,7 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.TagMapper">
 <select id="getTenTags" resultType="com.example.entity.Tag">
-select id, tag_name from tag order by sort_order limit 10;
+select 
+  id, 
+  tag_name 
+from tag 
+order by sort_order 
+limit 10;
 </select>
 
 </mapper>

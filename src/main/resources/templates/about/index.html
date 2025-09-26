@@ -1,54 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width" />
+<!-- 個別タイトル -->
+<th:block layout:fragment="pageTitle">
 <title>サイトについて | みかみごはん</title>
-<!-- bootstrap CSS only -->
-<link
-  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-  rel="stylesheet"
-  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-  crossorigin="anonymous">
-<link rel="stylesheet" th:href="@{/css/common/common.css}">
-<link rel="stylesheet" th:href="@{/css/common/footer.css}">
-<link rel="stylesheet" th:href="@{/css/common/header.css}">
-<link rel="stylesheet" th:href="@{/css/news/index.css}">
-<link rel="stylesheet" th:href="@{/css/search/search.css}">
-<link rel="stylesheet" th:href="@{/css/recipe/detail.css}">
+</th:block>
+
+<!-- 個別CSS -->
+<th:block layout:fragment="pageStyles">
 <link rel="stylesheet" th:href="@{/css/about/index.css}">
+</th:block>
 
-<!-- Swiper -->
-<link rel="stylesheet"
-  th:href="@{/css/common/swiper/swiper-bundle.min.css}" />
-<link rel="stylesheet" th:href="@{/css/common/swiper/swiper.css}" />
-
-<!-- menu -->
-<link rel="stylesheet" th:href="@{/css/common/jquery.fatNav.min.css}">
-<!-- fontawesome -->
-<link href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-  rel="stylesheet">
-<!-- slick -->
-<link rel="stylesheet" th:href="@{css/slick/slick.css}">
-<link rel="stylesheet" th:href="@{css/slick/slick-theme.css}">
-<script
-  src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<script src="https://kit.fontawesome.com/b02fe1bd6e.js"
-  crossorigin="anonymous"></script>
-</head>
-
-<body>
-  <!-- 共通ヘッダー -->
-  <span th:insert="common/header::frag_header"></span>
-  <!-- SP 共通ヘッダー内ハンバーガーメニュー -->
-  <span th:insert="common/menu_modal_sp.html::frag_menu_modal_sp"></span>
-  
+<th:block layout:fragment="content">
   <div class="container">
     <main>
       <!-- ファーストビュー -->
@@ -69,7 +31,7 @@
         </div>
         <div>
           <p>管理人のみかみです。<br>
-          普段から料理をよくするのですが、
+          普段から料理をよくするので、
           自分専用のレシピサイトがほしくて開設しました。<br><br>
           普段はIT企業でエンジニアとして働いており、<br>
           本サイトも自身で開発、改修しております。</p>
@@ -85,7 +47,7 @@
         <div>
           <p>このサイトは誰でもレシピの検索、閲覧ができます。<br>
           ご自由にお使いください。<br><br>
-          ※気まぐれで改修、更新をします。
+          ※適宜改修、更新をしていきます。
           </p>
         </div>
       </div>
@@ -98,7 +60,7 @@
         </div>
         <div>
           <p>
-          管理人はかなりズボラなので、材料や調味料の計量をしません。<br>
+          管理人はズボラなので、材料や調味料の計量をしません。<br>
           ですので、このサイトでも計量についての記載はしておりません。<br><br>
           濃い目の味が好きな方、薄めの味が好きな方、<br>
           大人数用、少人数用作りたい方、<br>
@@ -143,7 +105,7 @@
     
     <!-- サイドバー -->
     <aside>
-    　　<!-- 検索 -->
+      <!-- 検索 -->
       <div class="aside_content">
         <div>
           <h4>レシピ名・食材で検索</h4>
@@ -153,17 +115,18 @@
           <span th:insert="common/search_form::frag_search_form"></span>
         </div>
       </div>
-      
+
       <!-- おすすめレシピ -->
       <div class="aside_content">
         <div>
           <h4>おすすめレシピ</h4>
         </div>
         <div>
-          <ul class="recommend_recipe_ul">
-            <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+          <ul class="aside_recommend_recipe_ul">
+            <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
               <a th:href="@{/recipe/} + ${recipe.id}">
-                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
+                <span th:text="${recipe.title}">料理名</span>
               </a>
             </li>
           </ul>
@@ -171,21 +134,5 @@
       </div>
     </aside>
   </div>
-
-  <span th:insert="common/footer::frag_footer"></span>
-  <!-- スライドショー -->
-  <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <script th:src="@{js/common/swiper.js}"></script>
-  
-  <!-- menu -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-  <script th:src="@{/js/common/jquery.fatNav.min.js}"></script>
-  <script th:src="@{/js/common/fatNav.js}"></script>
-  <script src="https://kit.fontawesome.com/b02fe1bd6e.js" crossorigin="anonymous"></script>
-  <!-- slick -->
-  <script th:src="@{js/slick/slick.min.js}"></script>
-  <script th:src="@{js/slick/slick.js}"></script>
-  <script th:src="@{js/slick/custom.slick.js}"></script>
-</body>
-</html>
+</th:block>
+</div>

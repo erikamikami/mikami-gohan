@@ -4,10 +4,6 @@
 	background-color: #eee;
 }
 
-ul ol li{
-	list-style: none;
-}
-
 .footer_list_li{
 	display: inline-flex;
 	padding: 20px 3px 5px;

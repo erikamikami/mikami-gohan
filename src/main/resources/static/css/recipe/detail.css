@@ -1,31 +1,9 @@
 @charset "utf-8";
 
-/* ▼ 共通 ▼ */
-.container {
-	display: flex;
-	gap: 20px;
-	max-width: 1200px;
-	margin: 0 auto;
+.recipe_detail_main_img {
+	margin-top: 15px;
 }
 
-main {
-	flex: 3;
-	background: #fff;
-	padding: 0 5px;
-}
-
-aside {
-	flex: 1;
-	background: #f9f9f9;
-	padding: 20px;
-	margin: 20px 0;
-}
-
-.contents {
-	padding: 10px;
-	
-}
-/* ▲ 共通 ▲ */
 .recipe_name {
 	padding: 8px;
 }
@@ -44,16 +22,16 @@ aside {
 	border-radius: 17px;
 }
 
-.tag_name a{
+.tag_name a {
 	padding: 10px 13px;
 }
 
 .materials_head {
 	display: flex;
-  align-items: center;
-  gap: 10px; 
-  border-bottom: 1px dotted #9696a0;
-  margin-bottom: 10px;
+	align-items: center;
+	gap: 10px;
+	border-bottom: 1px dotted #9696a0;
+	margin-bottom: 10px;
 }
 
 .materials_head h2 {
@@ -66,26 +44,26 @@ aside {
 
 .memo_head {
 	display: flex;
-  align-items: center;
-  gap: 10px; 
-  border-bottom: 1px dotted #9696a0;
-  margin-bottom: 10px;
+	align-items: center;
+	gap: 10px;
+	border-bottom: 1px dotted #9696a0;
+	margin-bottom: 10px;
 }
 
 .how_to_head {
 	display: flex;
-  align-items: center;
-  gap: 10px; 
-  border-bottom: 1px dotted #9696a0;
-  padding-bottom: 6px;
-  margin: 10px 0;
+	align-items: center;
+	gap: 10px;
+	border-bottom: 1px dotted #9696a0;
+	padding-bottom: 6px;
+	margin: 10px 0;
 }
 
 .how_to_detail {
 	padding-bottom: 15px;
 }
 
-.aside_content{
+.aside_content {
 	margin-bottom: 20px;
 }
 
@@ -95,7 +73,7 @@ aside {
 	flex-wrap: wrap;
 	justify-content: space-between;
 	padding-left: 0;
-	font-size: 13px; 
+	font-size: 13px;
 }
 
 .recommend_recipe_li {

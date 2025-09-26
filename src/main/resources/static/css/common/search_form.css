@@ -1,24 +1,24 @@
 @charset "utf-8";
 
 .search-set {
-	text-align: center;
+  text-align: center;
 }
 
 .search-input {
-	margin: 15px 0;
-	padding: 8px 15px;
-	width: 70%;
+  margin: 15px 0;
+  padding: 8px 15px;
+  width: 70%;
 }
 
 .search-submit {
-	border: none;
-	background: none;
-	padding: 0;
-	cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
 }
 
 .search-submit_img {
-	margin-left: 6px;
+  margin-left: 6px;
 }
 
 @media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */

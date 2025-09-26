@@ -1,61 +1,6 @@
 @charset "utf-8";
 
-ul, ol, li {
-	list-style: none;
-}
-
-h2 {
-	text-align: center;
-}
-
-/* ▼ 共通 ▼ */
-.container {
-  display: flex;
-  gap: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-main {
-  flex: 3;
-  background: #fff;
-  padding: 0 5px;
-}
-
-aside {
-  flex: 1;
-  background: #f9f9f9;
-  padding: 20px;
-  margin: 20px 0;
-}
-
-.contents {
-  padding: 10px;
-  
-}
-/* ▲ 共通 ▲ */
-
-.content_head>div {
-	text-align: center;
-	font-size: 15px;
-	padding-bottom: 3px;
-	color: #FC1E01;
-	font-weight: 500;
-}
-
-.intro_txt {
-	text-align: center;
-}
-
-.more_btn {
-	text-align: center;
-}
-
-.ab_li {
-	margin-bottom: 2%;
-}
-
-.ab_ul {
+.recommend_recipe_ul {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
@@ -63,45 +8,94 @@ aside {
 	padding-left: 0px;
 }
 
-h2 {
-	margin-bottom: 30px;
+.recommend_recipe_li {
+	margin-bottom: 2%;
 }
 
-.intro_txt_bl {
-	margin-bottom: 30px;
+.tag_contents {
+  margin-bottom: 50px;
 }
 
-.inq_sub_item_con {
-	text-align: center;
+.tag_list {
+  margin-bottom: 40px;
 }
 
-.inq_sub_item {
-	padding: 30px;
-	background-color: #eee;
-	margin: 20px 0;
+.tag_list_detail {
+  border-top: 1px dotted #9696a0;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.inq_sub_h3 {
-	font-size: 14px;
-	font-weight: bold;
+.tag_list_detail_child {
+  height: auto;
+  padding: 10px 18px;
+  margin: 5px -24px 0 0;
+  display: flex; /* 高さを揃えるための指定 */
+  flex-direction: column; /* 高さを揃えるための指定 */
+  border: 1px solid #ccc;
+  border-radius: 17px;
 }
 
-.tel_number {
-	font-size: 35px;
-	font-weight: 500;
+.tag_list_detail_child a:hover{
+  color: #fff;
+}
+
+.tag_list_detail_child:hover{
+  color: #fff;
+  background-color: #414620;
+  transition: 0.5s;
+}
+
+.tag_header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.tag_head {
+  font-size: 22px;
+}
+
+.popular_tag_head {
+  position: absolute;
+  top: 83%;
+  left: 50px;
+}
+
+.recommend_recipe_header{
+  font-size: 22px;
+  border-bottom: 1px dotted #9696a0;
+  margin-bottom: 10px;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.recommend_recipe_header p{
+  margin: 0 0 10px 12px;
+}
+
+.recommend_recipe_header img{
+  margin-left: 7px;
+}
+
+.content{
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
-	.ab_li {
-		width: 49%;
-	}
-	.container {
-    flex-direction: column; /* スマホでは縦並び */
+  .recommend_recipe_li {
+    width: 49%;
   }
 }
 
 @media screen and (min-width: 991px) { /* 991px以上に適用されるCSS（PC用） */
-	.ab_li {
+	.recommend_recipe_li {
 		width: 32%;
 	}
 }

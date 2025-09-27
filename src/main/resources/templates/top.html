@@ -21,15 +21,17 @@
     <div class="swiper-wrapper">
      <div class="swiper-slide" th:each="recipe : ${recentlyRecipes}">
        <a th:href="@{/recipe/} + ${recipe.id}">
-         <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
+         <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
          <p th:text="${recipe.title}"></p>
        </a>
       </div>
     </div>
-
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-prev"></div>
-    <div class="swiper-button-next"></div>
+    
+    <div class="swiper-paginatio_dot">
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
   </div>
 
   <div class="container">
@@ -48,8 +50,8 @@
       <div class="tag_contents">
         <div class="tag_list">
           <div class="tag_list_detail" >
-          　　<div class="tag_list_detail_child" th:each="tag : ${popularTags}">
-              <a th:href="'/search?tag=' + ${tag.tagName}" th:text="${tag.tagName}"></a>
+            <div class="tag_list_detail_child" th:each="tag : ${popularTags}">
+              <a th:href="'/search?tag=' + ${tag.tagName}" th:text="'#' + ${tag.tagName}"></a>
             </div>
           </div>
         </div>
@@ -66,7 +68,7 @@
         <ul class="recommend_recipe_ul">
           <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
             <a th:href="@{/recipe/} + ${recipe.id}">
-              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'"><span th:text="${recipe.title}">料理名</span>
+              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
             </a>
           </li>
         </ul>

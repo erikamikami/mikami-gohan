@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+.contents {
+	padding: 17px 0;
+}
+
 .recipe_detail_main_img {
 	margin-top: 15px;
 }
@@ -40,6 +44,7 @@
 
 .material_name {
 	padding-bottom: 5px;
+	list-style: disc;
 }
 
 .memo_head {
@@ -61,10 +66,6 @@
 
 .how_to_detail {
 	padding-bottom: 15px;
-}
-
-.aside_content {
-	margin-bottom: 20px;
 }
 
 .recommend_recipe_ul {

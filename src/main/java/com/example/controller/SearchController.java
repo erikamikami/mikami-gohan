@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.entity.Recipe;
+import com.example.entity.Tag;
 import com.example.service.RecipeService;
+import com.example.service.TagService;
 
 @Controller
 @RequestMapping("/search")
@@ -18,6 +20,9 @@ public class SearchController {
 
   @Autowired
   private RecipeService recipeService;
+  
+  @Autowired
+  private TagService tagService;
 
   @RequestMapping("")
   public String search(@RequestParam(value = "keyword", required = false) String keyword,
@@ -26,6 +31,10 @@ public class SearchController {
     // おすすめレシピの取得
     List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
+    
+    // おすすめタグの取得
+    List<Tag> recommendTags = tagService.getTopTenTags();
+    model.addAttribute("recommendTags", recommendTags);
     
     // 検索窓への入力があった場合
     if (keyword != null && keyword != "") {

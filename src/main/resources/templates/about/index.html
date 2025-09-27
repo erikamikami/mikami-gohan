@@ -125,7 +125,7 @@
           <ul class="aside_recommend_recipe_ul">
             <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
               <a th:href="@{/recipe/} + ${recipe.id}">
-                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
                 <span th:text="${recipe.title}">料理名</span>
               </a>
             </li>

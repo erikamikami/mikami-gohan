@@ -29,7 +29,7 @@ public class TopController {
     model.addAttribute("recentlyRecipes", recentlyRecipes);
     
     // 人気のタグ一覧取得
-    List<Tag> popularTags = tagService.getTenTags();
+    List<Tag> popularTags = tagService.getTopTenTags();
     model.addAttribute("popularTags", popularTags);
     
     // おすすめのレシピ取得

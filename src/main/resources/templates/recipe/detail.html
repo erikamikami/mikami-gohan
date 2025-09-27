@@ -17,7 +17,7 @@
       <div>
         <!-- レシピ画像 -->
         <div class="recipe_detail_main_img">
-          <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
+          <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
         </div>
         <!-- 料理名 -->
         <div class="recipe_name">
@@ -93,13 +93,13 @@
       <!-- おすすめレシピ -->
       <div class="aside_content">
         <div>
-          <h4>おすすめレシピ</h4>
+          <h4>こちらもおすすめ</h4>
         </div>
         <div>
           <ul class="aside_recommend_recipe_ul">
             <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
               <a th:href="@{/recipe/} + ${recipe.id}">
-                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpeg'">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
                 <span th:text="${recipe.title}">料理名</span>
               </a>
             </li>

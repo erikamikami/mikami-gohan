@@ -14,6 +14,23 @@
 	padding-left: 10px;
 }
 
+.tag_names {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tag_name a {
+  padding: 7px 9px;
+}
+
+.tag_name {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 17px;
+}
+
 @media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
 }
 

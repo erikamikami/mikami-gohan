@@ -16,8 +16,12 @@ main {
 aside {
 	flex: 1;
 	background: #f9f9f9;
-	padding: 20px;
+	padding: 0 20px;
 	margin: 20px 0;
+}
+
+.aside_content {
+  margin: 20px 0;
 }
 
 @media screen and (max-width: 990px) {

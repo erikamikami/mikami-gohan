@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import com.example.dao.TagMapper;
@@ -15,9 +16,10 @@ public class TagService {
   private TagMapper tagMapper;
   
   /**
-   * 表示順ごとに10件取得します
+   * 一番使用されているタグ10件取得する
    * */
-  public List<Tag> getTenTags(){
-    return tagMapper.getTenTags();
+  @Cacheable(value = "oneHourCache", key = "'getTenTags'")
+  public List<Tag> getTopTenTags(){
+    return tagMapper.getTopTenTags();
   }
 }

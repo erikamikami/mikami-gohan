@@ -44,19 +44,19 @@ public class SearchController {
       PageInfo<Recipe> searchRecipe = recipeService.searchByRecipeTitleOrMaterialName(keyword, page);
       model.addAttribute("searchRecipe", searchRecipe);
       model.addAttribute("keyword", keyword);
-      return "/search/index";
+      return "search/index";
     // タグでの検索だった場合
     } else if(tag != null) {
       PageInfo<Recipe> searchRecipe = recipeService.searchByTagName(tag, page);
       model.addAttribute("searchRecipe", searchRecipe);
       String searchTags = tag.stream().collect(Collectors.joining(", "));
       model.addAttribute("searchTags", searchTags);
-      return "/search/index";
+      return "search/index";
     // 検索条件なしの場合
     } else {
       PageInfo<Recipe> searchRecipe = recipeService.getRecipeLimitThirty(page);
       model.addAttribute("searchRecipe", searchRecipe);
-      return "/search/index";
+      return "search/index";
     }
 
   }

@@ -22,6 +22,6 @@ public class AboutController {
     // おすすめのレシピ取得
     List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
-    return "/about/index";
+    return "about/index";
   }
 }

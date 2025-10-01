@@ -10,6 +10,7 @@
 <!-- 個別CSS -->
 <th:block layout:fragment="pageStyles">
 <link rel="stylesheet" th:href="@{/css/search/index.css}">
+<link rel="stylesheet" th:href="@{/css/common/paging.css}">
 </th:block>
 
 <th:block layout:fragment="content">
@@ -26,7 +27,7 @@
         <p th:text="'タグ名「' + ${searchTags} + '」の検索結果'"></p>
       </div>
       
-      <div th:if="${searchRecipe.size() < 1}">
+      <div th:if="${searchRecipe.list.size() < 1}">
         <h1>お探しのレシピは見つかりませんでした</h1>
         <p><br>
         いつもご使用ありがとうございます。<br>
@@ -36,14 +37,36 @@
       </div>
       
       <!-- 検索結果 -->
-      <div th:if="${searchRecipe.size() >= 1}">
+      <div th:if="${searchRecipe.list.size() >= 1}">
         <ul class="search_recipe_ul">
-          <li class="search_recipe_li" th:each="recipe : ${searchRecipe}">
+          <li class="search_recipe_li" th:each="recipe : ${searchRecipe.list}">
             <a th:href="@{/recipe/} + ${recipe.id}">
               <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
             </a>
           </li>
         </ul>
+      </div>
+      
+      <!-- ページング -->
+      <div th:if="${searchRecipe.pages >= 1}">
+        <div class="paging">
+          <div th:if="${searchRecipe.hasPreviousPage and searchRecipe.pages > 2}" class="paging_column">
+            <a th:href="@{|?page=1|}">&lt;&lt;</a>
+          </div>
+          <div th:if="${searchRecipe.hasPreviousPage}" class="paging_column">
+            <a th:href="@{|?page=${searchRecipe.pageNum - 1}|}">&lt;</a>
+          </div>
+          <div th:each="i : ${#numbers.sequence(1, searchRecipe.pages)}" th:classappend="${i} == ${searchRecipe.pageNum} ? 'now' : ''" class="paging_column">
+            <a th:href="@{|?page=${i}|}" th:text="${i}">1</a>
+          </div>
+          <div th:if="${searchRecipe.hasNextPage}" class="paging_column">
+            <a th:href="@{|?page=${searchRecipe.pageNum + 1}|}">&gt;</a>
+          </div>
+          <div th:if="${searchRecipe.hasNextPage and searchRecipe.pages > 2}"  class="paging_column">
+            <a th:href="@{|?page=${searchRecipe.navigateLastPage}|}">&gt;&gt;</a>
+          </div>
+          
+        </div>
       </div>
     </main>
     

@@ -13,6 +13,7 @@ import com.example.entity.Recipe;
 import com.example.entity.Tag;
 import com.example.service.RecipeService;
 import com.example.service.TagService;
+import com.github.pagehelper.PageInfo;
 
 @Controller
 @RequestMapping("/search")
@@ -25,8 +26,10 @@ public class SearchController {
   private TagService tagService;
 
   @RequestMapping("")
-  public String search(@RequestParam(value = "keyword", required = false) String keyword,
+  public String search(
+      @RequestParam(value = "keyword", required = false) String keyword,
       @RequestParam(value = "tag", required = false) List<String> tag,
+      @RequestParam(value = "page", required = false, defaultValue = "1") int page,
       Model model) {
     // おすすめレシピの取得
     List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
@@ -38,20 +41,20 @@ public class SearchController {
     
     // 検索窓への入力があった場合
     if (keyword != null && keyword != "") {
-      List<Recipe> searchRecipe = recipeService.searchByRecipeTitleOrMaterialName(keyword);
+      PageInfo<Recipe> searchRecipe = recipeService.searchByRecipeTitleOrMaterialName(keyword, page);
       model.addAttribute("searchRecipe", searchRecipe);
       model.addAttribute("keyword", keyword);
       return "/search/index";
     // タグでの検索だった場合
     } else if(tag != null) {
-      List<Recipe> searchRecipe = recipeService.searchByTagName(tag);
+      PageInfo<Recipe> searchRecipe = recipeService.searchByTagName(tag, page);
       model.addAttribute("searchRecipe", searchRecipe);
       String searchTags = tag.stream().collect(Collectors.joining(", "));
       model.addAttribute("searchTags", searchTags);
       return "/search/index";
     // 検索条件なしの場合
     } else {
-      List<Recipe> searchRecipe = recipeService.getRecipeLimitThirty();
+      PageInfo<Recipe> searchRecipe = recipeService.getRecipeLimitThirty(page);
       model.addAttribute("searchRecipe", searchRecipe);
       return "/search/index";
     }

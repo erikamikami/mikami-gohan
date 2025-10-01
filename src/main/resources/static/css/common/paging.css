@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+.paging {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	margin: 55px 0;
+}
+
+.paging_column {
+	padding: 0 10px;
+	margin: 0 7px;
+}
+
+.paging_column.now {
+	border: solid 1px #000;
+	color: #fff;
+	background-color: #000;
+}
+
+.paging_column.now>a {
+	color: #fff;
+}
+
+@media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
+}
+
+@media screen and (max-width: 481px) { /* 481px以下に適用されるCSS（スマホ用） */
+	.paging {
+		margin: 40px 0 0;
+	}
+}

@@ -9,21 +9,45 @@ import com.example.entity.Recipe;
 @Mapper
 public interface RecipeMapper {
 
-  // 作成日時が最近順に5件取得します
+  /**
+   * 作成日時が最近順に5件取得
+   * @param keywords
+   * @return List<Recipe>
+   */
   public List<Recipe> getRecipeOrderByCreatedDateLimitFive();
 
-  // おすすめで作成日時が最近順に6件取得します
+  /**
+   * おすすめで作成日時が最近順に6件取得
+   * @param keywords
+   * @return List<Recipe>
+   */
   public List<Recipe> getRecommendRecipeOrderByCreatedDateLimitSix();
 
-  // id指定で1件のレシピ情報を取得する
+  /**
+   * id指定で1件のレシピ情報を取得
+   * @param keywords
+   * @return Recipe
+   */
   public Recipe getRecipeById(Integer id);
   
-  // 作成日順で 30件取得する
+  /**
+   * 作成日順で取得
+   * @param keywords
+   * @return List<Recipe>
+   */
   public List<Recipe> getRecipeLimitThirty();
   
-  // レシピ名か材料名であいまい検索 30件取得する
+  /**
+   * レシピ名か材料名であいまい検索
+   * @param keywords
+   * @return List<Recipe>
+   */
   public List<Recipe> searchByRecipeTitleOrMaterialName(@Param("keywords") List<String> keywords);
   
-  // タグ名で検索する。30件取得する。
+  /**
+   * タグ名で検索
+   * @param keywords
+   * @return List<Recipe>
+   */
   public List<Recipe> searchByTagName(@Param("tags") List<String> tags);
 }

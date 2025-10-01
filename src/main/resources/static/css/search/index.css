@@ -11,7 +11,7 @@
 
 .search_recipe_li {
 	width: 32%;
-	padding-left: 10px;
+	padding: 0 0 10px 5px;
 }
 
 .tag_names {

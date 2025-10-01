@@ -84,7 +84,7 @@ order by m.sort_order
 </select>
 
 <select id="getRecipeLimitThirty" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true order by created_date DESC limit 30;
+select id, title from recipe where display_flg = true order by created_date DESC
 </select>
 
 <select id="searchByRecipeTitleOrMaterialName" resultType="com.example.entity.Recipe" parameterType="map">
@@ -108,7 +108,6 @@ where
     )
   </if>
 order by r.created_date
-limit 30;
 </select>
 
 <select id="searchByTagName" resultType="com.example.entity.Recipe" parameterType="map">
@@ -131,7 +130,6 @@ where
   or t5.tag_name like CONCAT('%', #{tag}, '%')
   </foreach>
 order by r.created_date
-limit 30;
 </select>
 
 </mapper>

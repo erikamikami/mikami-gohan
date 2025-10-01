@@ -13,7 +13,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # JAR名を柔軟に
-ARG JAR_FILE=/home/app/target/mikami-gohan.jar
+ARG JAR_FILE=/home/app/target/mikami-gohan-0.0.1-SNAPSHOT.jar
 COPY --from=build ${JAR_FILE} app.jar
 
 # 非rootユーザー

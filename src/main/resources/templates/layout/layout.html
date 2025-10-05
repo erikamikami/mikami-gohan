@@ -37,6 +37,15 @@
 <link rel="stylesheet" th:href="@{/css/common/aside_recommend.css}">
 <!-- 個別CSS -->
 <th:block layout:fragment="pageStyles"></th:block>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HFHBPR0GQC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-HFHBPR0GQC');
+</script>
 </head>
 
 <body>

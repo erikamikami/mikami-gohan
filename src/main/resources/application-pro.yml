@@ -1,10 +1,10 @@
 spring:
   datasource:
-    url: jdbc:postgresql://dpg-d3ehctripnbc73btoqsg-a:5432/mikami_gohan
+    url: jdbc:postgresql://dpg-d3h1irffte5s73chthhg-a:5432/mikami_gohan
     username: mikami_gohan_user
     password: 5bJwtTTRgaHGP0GzwVvuRQqolJSWN5pk
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update  # テーブル自動生成・更新する場合
-    show-sql: false      # SQLをログに出す場合
+    show-sql: true      # SQLをログに出す場合

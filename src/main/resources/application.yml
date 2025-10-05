@@ -1,22 +1,5 @@
 spring:
-#local
-#  datasource:
-#    driverClassName: org.postgresql.Driver
-#    url: jdbc:postgresql://localhost:5432/mikami_gohan
-#    username: postgres
-#    password: postgres
-    
-#staging(render)
   datasource:
-    url: jdbc:postgresql://dpg-d3ehctripnbc73btoqsg-a:5432/mikami_gohan_postgres_stg
-    username: mikami_gohan_postgres_stg_user
-    password: PfocmMALnkZGmN2IrpMOH6TRsgDyFEwc
-    driver-class-name: org.postgresql.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update  # テーブル自動生成・更新する場合
-    show-sql: true      # SQLをログに出す場合
-    
     thymeleaf: 
       encoding: UTF-8
       cache: false
@@ -39,4 +22,5 @@ logging:
   level:
     org.mybatis: DEBUG
     com.example.mapper: DEBUG
+    org.springframework.boot.context.config: DEBUG
     

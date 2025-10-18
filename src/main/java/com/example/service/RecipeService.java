@@ -1,11 +1,8 @@
 package com.example.service;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -58,7 +55,7 @@ public class RecipeService {
    * @param keywords
    * @return List<Recipe>
    */
-  //@Cacheable(value = "oneHourCache", key = "'getRecipeLimitThirty'")
+  @Cacheable(value = "oneHourCache", key = "'getRecipeLimitThirty'")
   public PageInfo<Recipe> getRecipeLimitThirty(int page) {
     PageHelper.startPage(page, PAGING_PER_SIZE);
     List<Recipe> resultRecipe = recipeMapper.getRecipeLimitThirty();

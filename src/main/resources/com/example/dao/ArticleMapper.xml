@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.ArticleMapper">
+
+<select id="getArticleLimitThirty" resultType="com.example.entity.Article">
+select * from article where display_flg = true order by create_date DESC
+</select>
+
+<resultMap id="detailArticleResultMap" type="com.example.entity.ArticleDetail">
+    <id property="id" column="article_detail_id"/>
+    <result property="articleId" column="article_id"/>
+    <result property="atricleDetailTypeId" column="article_detail_type_id"/>
+    <result property="contents" column="contents" />
+    <result property="caption" column="caption"/>
+    <result property="externalLink" column="external_link"/>
+    <result property="externalLinkOgpTitle" column="external_link_ogp_title" />
+    <result property="externalLinkOgpDomain" column="external_link_ogp_domain"/>
+    <result property="externalLinkOgpImageUrl" column="external_link_ogp_image_url" />
+    <result property="externalLinkOgpGetDay" column="external_link_ogp_get_day"/>
+    <result property="displayFlg" column="display_flg" />
+    <result property="sortOrder" column="sort_order"/>
+    <result property="createDate" column="create_date"/>
+    <result property="updateDate" column="update_date"/>
+    
+    <association property="recipe" javaType="com.example.entity.Recipe">
+      <result property="id" column="recipe_id"/>
+      <result property="title" column="recipe_title"/>
+    </association>
+    
+</resultMap>
+
+<select id="getArticleDetails" parameterType="int" resultMap="detailArticleResultMap">
+select 
+  ad.id as article_detail_id,
+  ad.article_id,
+  ad.article_detail_type_id,
+  ad.contents,
+  ad.caption,
+  ad.recipe_id,
+  ad.external_link,
+  ad.external_link_ogp_title,
+  ad.external_link_ogp_domain,
+  ad.external_link_ogp_image_url,
+  ad.external_link_ogp_get_day,
+  ad.display_flg,
+  ad.sort_order,
+  ad.create_date,
+  ad.update_date,
+  r.id as recipe_id,
+  r.title as recipe_title
+from article as a
+left join article_detail as ad on a.id = ad.article_id and ad.display_flg = 'true'
+left join recipe as r on ad.recipe_id = r.id and r.display_flg = 'true'
+where 1 = 1
+  and a.display_flg = 'true'
+  and a.id = #{id}
+  and ad.article_id = #{id}
+order by ad.sort_order
+</select>
+
+
+</mapper>

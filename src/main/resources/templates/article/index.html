@@ -1,0 +1,75 @@
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<!-- 個別タイトル -->
+<th:block layout:fragment="pageTitle">
+<title>サイトについて | みかみごはん</title>
+</th:block>
+
+<!-- 個別CSS -->
+<th:block layout:fragment="pageStyles">
+<link rel="stylesheet" th:href="@{/css/article/index.css}">
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="container">
+    <main>
+      <div class="contents">
+        <div>
+          <h1 class="article_list_h1">記事一覧</h1>
+        </div>
+          <ul class="artice_list_ul">
+            <li class="artice_list_li" th:each="article : ${articles.list}">
+              <div class="artice_list_item">
+                <a th:href="@{/article/} + ${article.uniqueString}">
+                  <img class="artice_list_img" th:src="@{/img/article/} + ${article.uniqueString} + '.jpg'">
+                  <div class="article_list_text">
+                    <div class="artice_list_title">
+                      <p th:text="${article.title}">記事タイトル</p>
+                    </div>
+                    <div class="artice_list_introduction">
+                      <p th:text="${article.introduction}">記事導入</p>
+                    </div>
+                  </div>
+                  <div class="fa_right">
+                    <i class="fas fa-chevron-right"></i>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </main>
+    
+    <!-- サイドバー -->
+    <aside>
+      <!-- 検索 -->
+      <div class="aside_content">
+        <div>
+          <h4>レシピ名・食材で検索</h4>
+        </div>
+        <div>
+          <!-- 検索窓 -->
+          <span th:insert="common/search_form::frag_search_form"></span>
+        </div>
+      </div>
+
+      <!-- おすすめレシピ -->
+      <div class="aside_content">
+        <div>
+          <h4>おすすめレシピ</h4>
+        </div>
+        <div>
+          <ul class="aside_recommend_recipe_ul">
+            <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.id}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
+                <span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</th:block>
+</div>

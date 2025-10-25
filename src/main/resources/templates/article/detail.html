@@ -1,0 +1,70 @@
+<div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+
+<!-- 個別タイトル -->
+<th:block layout:fragment="pageTitle">
+<title>サイトについて | みかみごはん</title>
+</th:block>
+
+<!-- 個別CSS -->
+<th:block layout:fragment="pageStyles">
+<link rel="stylesheet" th:href="@{/css/about/index.css}">
+</th:block>
+
+<th:block layout:fragment="content">
+  <div class="container">
+    <main>
+      <div>
+        <div>
+          <!-- メイン画像 -->
+          <div>
+          </div>
+          <!-- タイトル -->
+          <div>
+          </div>
+        </div>
+        
+        <!-- 目次 -->
+        <div>
+        </div>
+        
+        <!-- contents開始 -->
+        <div>
+          <div th:each="article : ${articles.list}">
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- サイドバー -->
+    <aside>
+      <!-- 検索 -->
+      <div class="aside_content">
+        <div>
+          <h4>レシピ名・食材で検索</h4>
+        </div>
+        <div>
+          <!-- 検索窓 -->
+          <span th:insert="common/search_form::frag_search_form"></span>
+        </div>
+      </div>
+
+      <!-- おすすめレシピ -->
+      <div class="aside_content">
+        <div>
+          <h4>おすすめレシピ</h4>
+        </div>
+        <div>
+          <ul class="aside_recommend_recipe_ul">
+            <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.id}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
+                <span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </div>
+</th:block>
+</div>

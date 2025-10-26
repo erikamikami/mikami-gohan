@@ -1,5 +1,22 @@
 <div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
+<!-- 個別metaデータ -->
+<th:block layout:fragment="pageMeta">
+<meta property="og:title" th:if="${keyword != null and keyword != ''}" th:content="${keyword} + 'の検索結果 | みかみごはん'" />
+<meta property="og:title" th:if="${searchTags != null and searchTags != ''}" th:content="${searchTags} + 'の検索結果 | みかみごはん'" />
+<meta property="og:title" th:if="${(keyword == null or keyword == '') and (searchTags == null or searchTags == '')}" content="検索一覧 | みかみごはん"/>
+<meta property="og:type" content="website" />
+
+<meta property="og:url" th:if="${keyword != null and keyword != ''}" th:content="'https://mikami-gohan.com/search?keyword=' + ${keyword}" />
+<meta property="og:url" th:if="${searchTags != null and searchTags != ''}" th:content="'https://mikami-gohan.com/search?tag=' + ${searchTags}" />
+<meta property="og:url" th:if="${(keyword == null or keyword == '') and (searchTags == null or searchTags == '')}" content="'https://mikami-gohan.com/search" />
+
+<meta property="og:image" content="https://mikami-gohan.com/img/mikami-gohan_green.jpg" />
+<meta property="og:description" content="検索結果" />
+<meta property="og:site_name" content="みかみごはん" />
+<meta property="og:locale" content="ja_JP" />
+</th:block>
+
 <!-- 個別タイトル -->
 <th:block layout:fragment="pageTitle">
 <title th:if="${keyword != null and keyword != ''}" th:text="${keyword} + 'の検索結果 | みかみごはん'"></title>

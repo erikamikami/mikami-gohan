@@ -1,5 +1,16 @@
 <div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
+<!-- 個別metaデータ -->
+<th:block layout:fragment="pageMeta">
+<meta property="og:title" content="みかみごはん" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mikami-gohan.com" />
+<meta property="og:image" content="https://mikami-gohan.com/img/mikami-gohan_green.jpg" />
+<meta property="og:description" content="みかみが作る、みかみのためのレシピサイト。管理人のみかみです。普段から料理をよくするので、 自分専用のレシピサイトがほしくて開設しました。このサイトは誰でもレシピの検索、閲覧ができます。ご自由にお使いください。" />
+<meta property="og:site_name" content="みかみごはん" />
+<meta property="og:locale" content="ja_JP" />
+</th:block>
+
 <!-- 個別タイトル -->
 <th:block layout:fragment="pageTitle">
 <title>みかみごはん</title>

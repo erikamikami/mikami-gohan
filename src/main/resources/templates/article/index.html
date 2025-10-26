@@ -1,8 +1,19 @@
 <div xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 
+<!-- 個別metaデータ -->
+<th:block layout:fragment="pageMeta">
+<meta property="og:title" content="記事一覧 | みかみごはん" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://mikami-gohan.com/article" />
+<meta property="og:image" content="https://mikami-gohan.com/img/mikami-gohan_green.jpg" />
+<meta property="og:description" content="みかみごはんの記事一覧" />
+<meta property="og:site_name" content="みかみごはん" />
+<meta property="og:locale" content="ja_JP" />
+</th:block>
+
 <!-- 個別タイトル -->
 <th:block layout:fragment="pageTitle">
-<title>サイトについて | みかみごはん</title>
+<title>記事一覧 | みかみごはん</title>
 </th:block>
 
 <!-- 個別CSS -->

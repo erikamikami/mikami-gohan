@@ -20,7 +20,7 @@ public class AboutController {
   @RequestMapping("")
   public String index(Model model) {
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
     return "about/index";
   }

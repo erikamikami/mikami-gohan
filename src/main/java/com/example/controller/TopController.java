@@ -33,7 +33,7 @@ public class TopController {
     model.addAttribute("popularTags", popularTags);
     
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
     
     return "top";

@@ -12,6 +12,10 @@ select id, title from recipe where display_flg = true order by created_date DESC
 select id, title from recipe where display_flg = true and recommend_flg = true order by created_date DESC limit 6;
 </select>
 
+<select id="getRandomRecipeLimitSix" resultType="com.example.entity.Recipe">
+select id, title from recipe where display_flg = true order by random() limit 6;
+</select>
+
 <resultMap id="detailRecieResultMap" type="com.example.entity.Recipe">
     <id property="id" column="id"/>
     <result property="title" column="title"/>

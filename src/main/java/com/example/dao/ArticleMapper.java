@@ -17,10 +17,23 @@ public interface ArticleMapper {
   public List<Article> getArticleLimitThirty();
   
   /**
+   * 記事1件取得
+   * @param 
+   * @return Article
+   */
+  public Article getArticle(String uniqueString);
+  
+  /**
    * 記事詳細 取得
    * @param 
    * @return Article
    */
-  public List<ArticleDetail> getArticleDetails(int id);
+  public List<ArticleDetail> getArticleDetails(String uniqueString);
+  
+  /**
+   * OGP設定　更新
+   * @param ArticleDetail
+   */
+  public int updateOgpData(ArticleDetail articleDetail);
 
 }

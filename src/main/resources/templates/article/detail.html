@@ -2,34 +2,83 @@
 
 <!-- 個別タイトル -->
 <th:block layout:fragment="pageTitle">
-<title>サイトについて | みかみごはん</title>
+<title th:text="${articleDetails[0].article.title + ' | みかみごはん'}"></title>
 </th:block>
 
 <!-- 個別CSS -->
 <th:block layout:fragment="pageStyles">
-<link rel="stylesheet" th:href="@{/css/about/index.css}">
+<link rel="stylesheet" th:href="@{/css/article/detail.css}">
 </th:block>
 
 <th:block layout:fragment="content">
   <div class="container">
     <main>
       <div>
-        <div>
-          <!-- メイン画像 -->
-          <div>
+        <div class="first_view">
+          <div class="main_image">
+            <img th:src="@{/img/article/} + ${articleDetails[0].article.uniqueString} + '.jpg'">
           </div>
-          <!-- タイトル -->
-          <div>
+          <div class="main_title">
+            <h1 th:text="${articleDetails[0].article.title}">タイトル</h1>
+          </div>
+          <div class="introduction">
+            <p th:utext="${articleDetails[0].article.introduction}">導入</p>
           </div>
         </div>
         
         <!-- 目次 -->
-        <div>
+        <div class="table_contents">
+          <div class="table_content">
+            <h1>
+              <i class="fas fa-caret-down"></i>
+              <i class="fas fa-caret-right"></i>
+               目次
+            </h1>
+            <ol class="table_content_list">
+              <li class="table_content_head" th:each="article : ${articleDetails}" th:if="${article.articleDetailTypeId == 1 || article.articleDetailTypeId == 2}">
+                <a th:if="${article.articleDetailTypeId == 1}" th:href="'#' + 'headL_' + ${article.id}">
+                  <p class="table_content_head_L" th:text="${article.contents}"></p>
+                </a>
+                <a th:if="${article.articleDetailTypeId == 2}"  th:href="'#' + 'headM_' + ${article.id}">
+                  <p class="table_content_head_M" th:text="${article.contents}"></p>
+                </a>
+              </li>
+            </ol>
+          </div>
         </div>
         
         <!-- contents開始 -->
         <div>
-          <div th:each="article : ${articles.list}">
+          <div th:each="article : ${articleDetails}">
+              <h1 th:id="'headL_' + ${article.id}" class="head_L" th:if="${article.articleDetailTypeId == 1}" th:text="${article.contents}">ヘッダ大</h1>
+              <h2 th:id="'headM_' + ${article.id}" class="head_M" th:if="${article.articleDetailTypeId == 2}" th:text="${article.contents}">ヘッダ中</h2>
+              <h3 class="head_S" th:if="${article.articleDetailTypeId == 3}" th:text="${article.contents}">ヘッダ小</h3>
+              <div class="text" th:if="${article.articleDetailTypeId == 4}">
+                <p th:utext="${article.contents}">テキスト</p>
+              </div>
+              <img class="image_url" th:if="${article.articleDetailTypeId == 5}" th:src="${article.contents}">
+              <p class="image_caption" th:if="${article.articleDetailTypeId == 5}" th:text="${article.caption}">写真</p>
+              
+              <div class="recipe" th:if="${article.articleDetailTypeId == 6}">
+                <a th:href="@{/recipe/} + ${article.recipe.id}">
+                  <div class="recipe_text">
+                    <p class="recipe_title" th:text="${article.recipe.title}">レシピ名</p>
+                    <p class="recipe_domain">mikami-gohan.com</p>
+                  </div>
+                  <img class="recipe_image" alt="" th:src="@{/img/recipe/} + ${article.recipe.id} + '.jpg'">
+                </a>
+              </div>
+              
+              <div class="ogp" th:if="${article.articleDetailTypeId == 7}">
+                <a th:href="${article.externalLink}" target="_blank">
+                  <div class="ogp_text">
+                    <p class="ogp_title" th:text="${article.externalLinkOgpTitle}"></p>
+                    <p class="ogp_domain" th:text="${article.externalLinkOgpDomain}"></p>
+                  </div>
+                  <img class="ogp_image" th:if="${#strings.isEmpty(article.externalLinkOgpImageUrl)}" src="/img/noImage.jpg">
+                  <img class="ogp_image" th:if="${!#strings.isEmpty(article.externalLinkOgpImageUrl)}" th:src="${article.externalLinkOgpImageUrl}">
+                </a>
+              </div>
           </div>
         </div>
       </div>
@@ -66,5 +115,6 @@
       </div>
     </aside>
   </div>
+  <script th:src="@{/js/article/detail.js}"></script>
 </th:block>
 </div>

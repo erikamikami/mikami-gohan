@@ -22,32 +22,36 @@ public class ArticleController {
 
   @Autowired
   private RecipeService recipeService;
-  
+
   @Autowired
   private ArticleService articleService;
 
   @RequestMapping("")
-  public String index(@RequestParam(value = "page", required = false, defaultValue = "1") int page,Model model) {
+  public String index(@RequestParam(value = "page", required = false, defaultValue = "1") int page, Model model) {
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
-    
+
     // 記事一覧取得
     PageInfo<Article> articles = articleService.getRecipeLimitThirty(page);
     model.addAttribute("articles", articles);
     return "article/index";
   }
 
-  @RequestMapping("{id}")
-  public String detail(@PathVariable("id") int id, Model model) {
+  @RequestMapping("{uniqueString}")
+  public String detail(@PathVariable("uniqueString") String uniqueString, Model model) {
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
-    
-    // 記事詳細　取得
-    List<ArticleDetail> articleDetails = articleService.getArticleDetails(id);
+
+    // 記事詳細 取得
+    List<ArticleDetail> articleDetails = articleService.getArticleDetails(uniqueString);
     model.addAttribute("articleDetails", articleDetails);
+    
+    // OGP更新
+    articleService.updateOgpData(articleDetails);
     
     return "article/detail";
   }
+  
 }

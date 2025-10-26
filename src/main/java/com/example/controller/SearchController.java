@@ -32,7 +32,7 @@ public class SearchController {
       @RequestParam(value = "page", required = false, defaultValue = "1") int page,
       Model model) {
     // おすすめレシピの取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
     
     // おすすめタグの取得

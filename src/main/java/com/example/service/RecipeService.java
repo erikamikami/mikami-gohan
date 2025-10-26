@@ -32,12 +32,20 @@ public class RecipeService {
 
   /**
    * おすすめで作成日時が最近順に6件取得
-   * @param keywords
    * @return List<Recipe>
    */
   @Cacheable(value = "oneHourCache", key = "'getRecommendRecipeOrderByCreatedDateLimitSix'")
   public List<Recipe> getRecommendRecipeOrderByCreatedDateLimitSix() {
     return recipeMapper.getRecommendRecipeOrderByCreatedDateLimitSix();
+  }
+  
+  /**
+   * ランダムで6件取得
+   * @return List<Recipe>
+   */
+  @Cacheable(value = "oneHourCache", key = "'getRandomRecipeLimitSix'")
+  public List<Recipe> getRandomRecipeLimitSix() {
+    return recipeMapper.getRandomRecipeLimitSix();
   }
 
   /**

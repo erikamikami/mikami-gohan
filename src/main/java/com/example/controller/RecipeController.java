@@ -28,7 +28,7 @@ public class RecipeController {
     model.addAttribute("recipe", recipe);
     
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRecommendRecipeOrderByCreatedDateLimitSix();
+    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitSix();
     model.addAttribute("recommendRecipe", recommendRecipe);
     
     return "recipe/detail";

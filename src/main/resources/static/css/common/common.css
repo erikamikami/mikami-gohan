@@ -9,7 +9,6 @@ h1, h2, h3, h4, h5, p, ul, li, input, form, a, button, pre {
 
 ul, ol, li {
   list-style: none;
-  padding: 0;
 }
 
 a {
@@ -53,8 +52,8 @@ img {
 	margin-bottom: 50px;
 }
 
-@media screen and (max-width: 481px) {
-	/* 481px以下に適用されるCSS（スマホ用） */
+@media screen and (max-width: 700px) {
+	/* 700px以下に適用されるCSS（スマホ用） */
 	#global_menu {
 		display: none;
 	}

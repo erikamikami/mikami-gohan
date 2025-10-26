@@ -24,8 +24,8 @@
 	touch-action: manipulation
 }
 
-@media screen and (min-width: 482px) {
-	/* 482px以下に適用されるCSS（スマホ用） */
+@media screen and (min-width: 701px) {
+	/* 701px以下に適用されるCSS（スマホ用） */
 	.hamburger {
 		display: none;
 	}

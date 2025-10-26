@@ -111,7 +111,7 @@ where
       </foreach>
     )
   </if>
-order by r.created_date
+order by r.created_date DESC
 </select>
 
 <select id="searchByTagName" resultType="com.example.entity.Recipe" parameterType="map">
@@ -133,7 +133,7 @@ where
   or t4.tag_name like CONCAT('%', #{tag}, '%')
   or t5.tag_name like CONCAT('%', #{tag}, '%')
   </foreach>
-order by r.created_date
+order by r.created_date DESC
 </select>
 
 </mapper>

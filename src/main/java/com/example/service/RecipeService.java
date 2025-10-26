@@ -63,7 +63,6 @@ public class RecipeService {
    * @param keywords
    * @return List<Recipe>
    */
-  @Cacheable(value = "oneHourCache", key = "'getRecipeLimitThirty'")
   public PageInfo<Recipe> getRecipeLimitThirty(int page) {
     PageHelper.startPage(page, PAGING_PER_SIZE);
     List<Recipe> resultRecipe = recipeMapper.getRecipeLimitThirty();

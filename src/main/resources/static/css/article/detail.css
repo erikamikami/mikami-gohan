@@ -67,9 +67,7 @@ main img, .image_caption, .recipe_title {
 }
 
 .table_content_head {
-	padding: 0 20 px;
-	height: 50px;
-	line-height: 50px;
+	padding: 3px;
 }
 
 .table_content_head_L {
@@ -85,36 +83,39 @@ main img, .image_caption, .recipe_title {
 	border-bottom: 3px solid #000;
 	padding-bottom: 20px;
 	margin-bottom: 30px;
+	margin-top: 80px;
 	font-weight: bold;
 }
 
 .head_M {
 	border-left: 4px solid #333;
 	padding-left: 25px;
-	height: 50px;
-	line-height: 45px;
-	padding-bottom: 20px;
+	padding: 12px;
 	margin-bottom: 15px;
+	margin-top: 55px;
 	font-weight: bold;
 }
 
 .head_S {
 	border-bottom: 1px dashed #ccc;
-	padding-left: 25px;
-	padding-bottom: 60px;
 	height: 50px;
 	line-height: 45px;
-	margin-bottom: 30px;
+	margin-bottom: 8px;
 }
 
 .text {
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 30px;
 }
 
 .text a {
 	color: #888;
 	border-bottom: 1px solid #888;
+}
+
+.image_caption{
+	text-align: center;
 }
 
 .ogp, .recipe {

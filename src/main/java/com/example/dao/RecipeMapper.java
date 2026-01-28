@@ -27,6 +27,12 @@ public interface RecipeMapper {
    * @return List<Recipe>
    */
   public List<Recipe> getRandomRecipeLimitSix();
+  
+  /**
+   * ランダムで12件取得
+   * @return List<Recipe>
+   */
+  public List<Recipe> getRandomRecipeLimitTwelve();
 
   /**
    * id指定で1件のレシピ情報を取得

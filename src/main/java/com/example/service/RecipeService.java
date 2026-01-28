@@ -47,6 +47,15 @@ public class RecipeService {
   public List<Recipe> getRandomRecipeLimitSix() {
     return recipeMapper.getRandomRecipeLimitSix();
   }
+  
+  /**
+   * ランダムで12件取得
+   * @return List<Recipe>
+   */
+  @Cacheable(value = "oneMinuteCache", key = "'getRandomRecipeLimitTwelve'")
+  public List<Recipe> getRandomRecipeLimitTwelve() {
+    return recipeMapper.getRandomRecipeLimitTwelve();
+  }
 
   /**
    * id指定で1件のレシピ情報を取得

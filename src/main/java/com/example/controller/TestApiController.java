@@ -43,6 +43,7 @@ public class TestApiController {
   public ResponseEntity<Map<String, String>> endpointB(@RequestBody Map<String, String> body) {
     String requestUuid = body.get("uuid");
     if(uuidService.comparisonUuid(requestUuid)) {
+      uuidService.updateUuid();
       return ResponseEntity.ok(Map.of("result", "ok"));
     }else {
       throw new ResponseStatusException(

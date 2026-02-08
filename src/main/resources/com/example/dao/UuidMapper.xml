@@ -7,8 +7,16 @@
 SELECT uuid FROM uuid where id = 1;
 </select>
 
+<select id="getToken" resultType="String">
+SELECT token FROM uuid where id = 1;
+</select>
+
 <select id="updateUuid" parameterType="String" >
 UPDATE uuid SET uuid = #{uuid} WHERE id = 1;
+</select>
+
+<select id="updateToken" parameterType="String" >
+UPDATE uuid SET token = #{token} WHERE id = 1;
 </select>
 
 </mapper>

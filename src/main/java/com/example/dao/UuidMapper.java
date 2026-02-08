@@ -14,8 +14,19 @@ public interface UuidMapper {
   public String getUuid();
   
   /**
-   * Uuid 更新
+   * token 取得
+   * @return String
+   */
+  public String getToken();
+  
+  /**
+   * Uuid token 更新
    */
   public void updateUuid(String uuid);
+  
+  /**
+   * Uuid token 更新
+   */
+  public void updateToken(String token);
 
 }

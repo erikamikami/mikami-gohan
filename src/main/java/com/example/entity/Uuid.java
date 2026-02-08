@@ -15,5 +15,6 @@ public class Uuid {
   
   private Integer id;
   private String uuid;
+  private String token;
 
 }

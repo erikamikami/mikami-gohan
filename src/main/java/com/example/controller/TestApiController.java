@@ -44,8 +44,30 @@ public class TestApiController {
     String requestUuid = body.get("uuid");
     if(uuidService.comparisonUuid(requestUuid)) {
       uuidService.updateUuid();
+       String token = uuidService.getToken();
+      return ResponseEntity.ok(Map.of("result", "ok", "token", token));
+    } else {
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST,
+          "bad request"
+      );
+    }
+  }
+  
+  /**
+   * リクエストのtokenがDBと同じだったら200
+   * そうでなかったら400
+   */
+  @PostMapping(
+      value = "/endpointC",
+      consumes = MediaType.APPLICATION_JSON_VALUE
+  )
+  public ResponseEntity<Map<String, String>> endpointC(@RequestBody Map<String, String> body) {
+    String requestToken = body.get("token");
+    if(uuidService.comparisonToken(requestToken)) {
+      uuidService.updateToken();
       return ResponseEntity.ok(Map.of("result", "ok"));
-    }else {
+    } else {
       throw new ResponseStatusException(
           HttpStatus.BAD_REQUEST,
           "bad request"

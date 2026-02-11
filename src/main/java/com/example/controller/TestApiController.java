@@ -44,13 +44,11 @@ public class TestApiController {
     String requestUuid = body.get("uuid");
     if(uuidService.comparisonUuid(requestUuid)) {
       uuidService.updateUuid();
-       String token = uuidService.getToken();
-      return ResponseEntity.ok(Map.of("result", "ok", "token", token));
+      return ResponseEntity.ok(Map.of("result", "OK"));
     } else {
-      throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST,
-          "bad request"
-      );
+      return ResponseEntity
+          .badRequest()
+          .body(Map.of("result", "NG"));
     }
   }
   

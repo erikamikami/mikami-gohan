@@ -32,7 +32,7 @@ public class TestApiController {
   }
   
   /**
-   * リクエストのUUIDがDBと同じだったらUUIDを更新して200とtokenを返却
+   * リクエストのUUIDがDBと同じだったらUUIDを更新して200と更新したtokenを返却
    * そうでなかったら400
    */
   @PostMapping(

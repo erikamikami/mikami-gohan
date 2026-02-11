@@ -25,7 +25,7 @@ public class UuidService {
   /**
    * token 取得
    * */
-  public String getToken(){
+  private String getToken(){
     return uuidMapper.getToken();
   }
   

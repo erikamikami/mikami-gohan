@@ -33,7 +33,7 @@ public class TestApiController {
   }
   
   /**
-   * リクエストのUUIDがDBと同じだったら200
+   * リクエストのUUIDがDBと同じだったらUUIDを更新して200とtokenを返却
    * そうでなかったら400
    */
   @PostMapping(
@@ -44,7 +44,8 @@ public class TestApiController {
     String requestUuid = body.get("uuid");
     if(uuidService.comparisonUuid(requestUuid)) {
       uuidService.updateUuid();
-      return ResponseEntity.ok(Map.of("result", "OK"));
+      String token = uuidService.updateToken();
+      return ResponseEntity.ok(Map.of("result", "OK", "token", token));
     } else {
       return ResponseEntity
           .badRequest()
@@ -53,7 +54,7 @@ public class TestApiController {
   }
   
   /**
-   * リクエストのtokenがDBと同じだったら200
+   * リクエストのtokenがDBと同じだったらtokenを更新して200を返却
    * そうでなかったら400
    */
   @PostMapping(
@@ -66,10 +67,9 @@ public class TestApiController {
       uuidService.updateToken();
       return ResponseEntity.ok(Map.of("result", "ok"));
     } else {
-      throw new ResponseStatusException(
-          HttpStatus.BAD_REQUEST,
-          "bad request"
-      );
+      return ResponseEntity
+          .badRequest()
+          .body(Map.of("result", "NG"));
     }
   }
 

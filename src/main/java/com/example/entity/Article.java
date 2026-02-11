@@ -1,6 +1,5 @@
 package com.example.entity;
 
-import java.util.Arrays;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

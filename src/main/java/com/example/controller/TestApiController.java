@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,15 +58,11 @@ public class TestApiController {
    * リクエストのtokenがDBと同じだったらtokenを更新して200を返却
    * そうでなかったら400
    */
-  @PostMapping(
-      value = "/endpointC",
-      consumes = MediaType.APPLICATION_JSON_VALUE
-  )
-  public ResponseEntity<Map<String, String>> endpointC(@RequestBody Map<String, String> body) {
-    String requestToken = body.get("token");
-    if(uuidService.comparisonToken(requestToken)) {
+  @GetMapping("/endpointC/{token}")
+  public ResponseEntity<Map<String, String>> endpointC(@PathVariable("token") String token) {
+    if(uuidService.comparisonToken(token)) {
       uuidService.updateToken();
-      return ResponseEntity.ok(Map.of("result", "ok"));
+      return ResponseEntity.ok(Map.of("result", "OK"));
     } else {
       return ResponseEntity
           .badRequest()

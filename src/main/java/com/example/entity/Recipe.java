@@ -33,6 +33,7 @@ public class Recipe {
   private boolean recommendflg;
   private List<Material> materials;
   private HowTo howTo;
+  private Meta meta;
   
   public List<String> getTagNameList() {
     return Arrays.asList(tag1Name, tag2Name, tag3Name, tag4Name, tag5Name);

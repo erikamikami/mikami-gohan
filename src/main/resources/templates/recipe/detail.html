@@ -2,12 +2,14 @@
 
 <!-- 個別metaデータ -->
 <th:block layout:fragment="pageMeta">
+<meta th:if="${recipe.meta != null and recipe.meta.description != null and recipe.meta.description != ''}" name="description" th:content="${recipe.meta.description}" />
 <meta property="og:title" th:content="${recipe.title + 'の作り方 | みかみごはん'}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" th:content="'https://mikami-gohan.com/recipe/' + ${recipe.id}" />
 <meta property="og:image" th:content="@{https://mikami-gohan.com/img/recipe/} + ${recipe.id} + '.jpg'" />
 <meta property="og:description" th:content="${recipe.title + 'のレシピ詳細です。'}" />
 <meta property="og:site_name" content="みかみごはん" />
+<meta  th:if="${recipe.meta != null and recipe.meta.description != null and recipe.meta.description != ''}" property="og:description" th:content="${recipe.meta.description}" />
 <meta property="og:locale" content="ja_JP" />
 </th:block>
 

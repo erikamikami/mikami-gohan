@@ -13,6 +13,54 @@
 <meta property="og:locale" content="ja_JP" />
 </th:block>
 
+<!-- Recipe schema -->
+<th:block layout:fragment="RecipeSchemaJson">
+<script data-n-head="ssr" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  "name": "[[${recipe.title}]]",
+  "description": "[[${recipe.meta.description}]]",
+  "keywords": "<th:block th:each="tagName, iterStat : ${recipe.tagNameList.?[#this != null and #this != '']}">[[${tagName}]]<th:block th:if="${!iterStat.last}">,</th:block></th:block>",
+  "datePublished": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",
+  "dateModified": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",
+  "recipeYield": "4人分",
+  "recipeIngredient": ["[(${#strings.arrayJoin(recipe.materials.![materialName], '","')})]"],
+  "recipeInstructions": [<th:block th:each="howTo, iterStat : ${recipe.howTo.howToList.?[#this != null and #this != '']}">
+    {
+      "@type": "HowToStep",
+      "text": "[[${howTo}]]",
+      "url": "https://mikami-gohan.com/recipe/[[${recipe.id}]]",
+      "image": "https://mikami-gohan.com/img/recipe/[[${recipe.id}]].jpg"
+    }<th:block th:if="${!iterStat.last}">,</th:block></th:block>
+  ],
+  "image": "https://mikami-gohan.com/img/recipe/[[${recipe.id}]].jpg",
+  "headline": "[[${recipe.title + 'の作り方 | みかみごはん'}]]",
+  "author": {
+    "@type": "Organization",
+    "name": "みかみごはん",
+    "url": "https://mikami-gohan.com/about",
+    "image": "https://mikami-gohan.com/img/thankyou.png",
+    "description": "管理人のみかみです。普段から料理をよくするので、 自分専用のレシピサイトがほしくて開設しました。\n\n",
+    "affiliation": {
+      "@type": "Organization",
+      "name": "みかみごはん",
+      "url": "https://mikami-gohan.com"
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "みかみごはん",
+    "url": "https://mikami-gohan.com"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://mikami-gohan.com/recipe/[[${recipe.id}]]"
+  }
+}
+</script>
+</th:block>
+
 <!-- 個別タイトル -->
 <th:block layout:fragment="pageTitle">
 <title th:text="${recipe.title + 'の作り方 | みかみごはん'}"></title>

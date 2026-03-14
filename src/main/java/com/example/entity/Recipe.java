@@ -1,6 +1,7 @@
 package com.example.entity;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -28,7 +29,7 @@ public class Recipe {
   private String tag4Name;
   private Integer tag5;
   private String tag5Name;
-  private String createdate;
+  private Date createdDate;
   private boolean displayflg;
   private boolean recommendflg;
   private List<Material> materials;

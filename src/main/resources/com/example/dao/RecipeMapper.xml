@@ -5,24 +5,25 @@
 <mapper namespace="com.example.dao.RecipeMapper">
 
 <select id="getRecipeOrderByCreatedDateLimitFive" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true order by created_date DESC, id DESC limit 5;
+select id, id_string, title from recipe where display_flg = true order by created_date DESC, id DESC limit 5;
 </select>
 
 <select id="getRecommendRecipeOrderByCreatedDateLimitSix" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true and recommend_flg = true order by created_date DESC limit 6;
+select id, id_string, title from recipe where display_flg = true and recommend_flg = true order by created_date DESC limit 6;
 </select>
 
 <select id="getRandomRecipeLimitSix" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true order by random() limit 6;
+select id, id_string, title from recipe where display_flg = true order by random() limit 6;
 </select>
 
 <select id="getRandomRecipeLimitTwelve" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true order by random() limit 12;
+select id, id_string, title from recipe where display_flg = true order by random() limit 12;
 </select>
 
 
 <resultMap id="detailRecieResultMap" type="com.example.entity.Recipe">
     <id property="id" column="id"/>
+    <result property="idString" column="id_string"/>
     <result property="title" column="title"/>
     <result property="memo" column="memo"/>
     <result property="createdDate" column="created_date"/>
@@ -61,9 +62,10 @@ select id, title from recipe where display_flg = true order by random() limit 12
     
 </resultMap>
 
-<select id="getRecipeById" parameterType="int" resultMap="detailRecieResultMap">
+<select id="getRecipeById" parameterType="String" resultMap="detailRecieResultMap">
 select 
   r.id, 
+  r.id_string,
   r.title, 
   r.memo, 
   r.created_date,
@@ -94,19 +96,20 @@ left outer join tag t5 on r.tag_5 = t5.id
 left outer join material m on r.id = m.recipe_id
 left outer join how_to h on r.id = h.recipe_id
 left outer join meta me on r.id = me.recipe_id
-where r.id = #{id}
+where r.id_string = #{idString}
 and r.display_flg = true
 order by m.sort_order
 ;
 </select>
 
 <select id="getRecipeLimitThirty" resultType="com.example.entity.Recipe">
-select id, title from recipe where display_flg = true order by created_date DESC
+select id, id_string, title from recipe where display_flg = true order by created_date DESC
 </select>
 
 <select id="searchByRecipeTitleOrMaterialName" resultType="com.example.entity.Recipe" parameterType="map">
 select
   DISTINCT r.id,
+  r.id_string,
   r.title,
   r.created_date
 from recipe AS r
@@ -130,6 +133,7 @@ order by r.created_date DESC
 <select id="searchByTagName" resultType="com.example.entity.Recipe" parameterType="map">
 select 
   r.id,
+  r.id_string,
   r.title,
   r.created_date
 from recipe r

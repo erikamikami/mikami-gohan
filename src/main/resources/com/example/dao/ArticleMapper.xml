@@ -40,6 +40,7 @@ and unique_string = #{uniqueString}
     
     <association property="recipe" javaType="com.example.entity.Recipe">
       <result property="id" column="recipe_id"/>
+      <result property="idString" column="recipe_id_string"/>
       <result property="title" column="recipe_title"/>
     </association>
     
@@ -67,6 +68,7 @@ select
   ad.create_date,
   ad.update_date,
   r.id as recipe_id,
+  r.id_string as recipe_id_string,
   r.title as recipe_title
 from article as a
 left join article_detail as ad on a.id = ad.article_id and ad.display_flg = 'true'

@@ -18,10 +18,10 @@ public class RecipeController {
   @Autowired
   private RecipeService recipeService;
 
-  @RequestMapping("{id}")
-  public String detail(@PathVariable("id") int id, Model model) {
+  @RequestMapping("{idString}")
+  public String detail(@PathVariable("idString") String idString, Model model) {
     // レシピ詳細 取得
-    Recipe recipe = recipeService.getRecipeById(id);
+    Recipe recipe = recipeService.getRecipeById(idString);
     if (recipe == null) {
       return "error/404";
     }

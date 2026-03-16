@@ -31,7 +31,7 @@
   <div class="swiper">
     <div class="swiper-wrapper">
      <div class="swiper-slide" th:each="recipe : ${recentlyRecipes}">
-       <a th:href="@{/recipe/} + ${recipe.id}">
+       <a th:href="@{/recipe/} + ${recipe.idString}">
          <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
          <p th:text="${recipe.title}"></p>
        </a>
@@ -78,7 +78,7 @@
       <div>
         <ul class="recommend_recipe_ul">
           <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
-            <a th:href="@{/recipe/} + ${recipe.id}">
+            <a th:href="@{/recipe/} + ${recipe.idString}">
               <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
             </a>
           </li>

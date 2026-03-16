@@ -63,8 +63,8 @@ public class RecipeService {
    * @return Recipe
    */
   @Cacheable(value = "oneHourCache", key = "'getRecipeById_' + #p0")
-  public Recipe getRecipeById(Integer id) {
-    return recipeMapper.getRecipeById(id);
+  public Recipe getRecipeById(String idString) {
+    return recipeMapper.getRecipeById(idString);
   }
 
   /**

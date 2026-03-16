@@ -5,7 +5,7 @@
 <meta th:if="${recipe.meta != null and recipe.meta.description != null and recipe.meta.description != ''}" name="description" th:content="${recipe.meta.description}" />
 <meta property="og:title" th:content="${recipe.title + 'の作り方 | みかみごはん'}" />
 <meta property="og:type" content="website" />
-<meta property="og:url" th:content="'https://mikami-gohan.com/recipe/' + ${recipe.id}" />
+<meta property="og:url" th:content="'https://mikami-gohan.com/recipe/' + ${recipe.idString}" />
 <meta property="og:image" th:content="@{https://mikami-gohan.com/img/recipe/} + ${recipe.id} + '.jpg'" />
 <meta property="og:description" th:content="${recipe.title + 'のレシピ詳細です。'}" />
 <meta property="og:site_name" content="みかみごはん" />
@@ -30,7 +30,7 @@
     {
       "@type": "HowToStep",
       "text": "[[${howTo}]]",
-      "url": "https://mikami-gohan.com/recipe/[[${recipe.id}]]",
+      "url": "https://mikami-gohan.com/recipe/[[${recipe.idString}]]",
       "image": "https://mikami-gohan.com/img/recipe/[[${recipe.id}]].jpg"
     }<th:block th:if="${!iterStat.last}">,</th:block></th:block>
   ],
@@ -55,7 +55,7 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://mikami-gohan.com/recipe/[[${recipe.id}]]"
+    "@id": "https://mikami-gohan.com/recipe/[[${recipe.idString}]]"
   }
 }
 </script>
@@ -159,7 +159,7 @@
         <div>
           <ul class="aside_recommend_recipe_ul">
             <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
-              <a th:href="@{/recipe/} + ${recipe.id}">
+              <a th:href="@{/recipe/} + ${recipe.idString}">
                 <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
                 <span th:text="${recipe.title}">料理名</span>
               </a>

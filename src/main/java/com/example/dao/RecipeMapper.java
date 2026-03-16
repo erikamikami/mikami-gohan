@@ -39,7 +39,7 @@ public interface RecipeMapper {
    * @param keywords
    * @return Recipe
    */
-  public Recipe getRecipeById(Integer id);
+  public Recipe getRecipeById(String idString);
   
   /**
    * 作成日順で取得

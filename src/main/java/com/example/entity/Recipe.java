@@ -17,6 +17,7 @@ import lombok.ToString;
 @ToString
 public class Recipe {
   private Integer id;
+  private String idString;
   private String title;
   private String memo;
   private Integer tag1;

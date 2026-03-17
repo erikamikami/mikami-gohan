@@ -20,7 +20,7 @@
   "@context": "https://schema.org",
   "@type": "Recipe",
   "name": "[[${recipe.title}]]",
-  "description": "[[${recipe.meta.description}]]",
+  "description": "<th:block th:if="${recipe.meta != null and recipe.meta.description != null and recipe.meta.description != ''}">[[${recipe.meta.description}]]</th:block>",
   "keywords": "<th:block th:each="tagName, iterStat : ${recipe.tagNameList.?[#this != null and #this != '']}">[[${tagName}]]<th:block th:if="${!iterStat.last}">,</th:block></th:block>",
   "datePublished": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",
   "dateModified": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",

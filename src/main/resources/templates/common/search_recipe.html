@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+</head>
+
+<body>
+  <!-- ▼　共通 レシピを探す ▼ -->
+    <div th:fragment="frag_search_recipe">
+      <div class="lets_today_cook">
+        <img alt="" src="/img/fukidashi/what_should_we_have_today.png">
+      </div>
+      <div class="recommend_recipe_header">
+        <img src="/img/fork_knife.png" >
+        <p>レシピを探す<p>
+      </div>
+      <div class="search_recipe">
+        <div class="search_recipe_box" th:each="category : ${categoryList}">
+          <div class="search_recipe_head">
+            <p>
+              <span class="search_category_name" th:text="${category.categoryName}"></span>
+              <span class="from_search">から探す</span>
+            </p>
+            <span class="fas fa-caret-down close sponly"></span>
+            <span class="fas fa-caret-right sponly"></span>
+          </div>
+          <div class="search_recipe_content">
+            <ul class="search_recipe_ul">
+              <li class="search_recipe_tag1" th:each="tag1 : ${category.tag1List}">
+              <a th:href="'/search?tag=' + ${tag1.tag1Name}"><span class="search_recipe_tag1_name" th:text="${tag1.tag1Name}"></span></a>
+              <span class="tag2_category" th:if="${tag1.tag2List != null and tag1.tag2List.size() > 0}" >
+                <span class="fas fa-caret-down close"></span>
+                <span class="fas fa-caret-right"></span>
+                その他カテゴリー
+              </span>
+                <ul class="search_recipe_ul2" th:if="${tag1.tag2List != null and tag1.tag2List.size() > 0}">
+                  <a th:each="tag2 : ${tag1.tag2List}" th:href="'/search?tag=' + ${tag2.tag2Name}"><li class="search_recipe_tag2_name" th:text="${tag2.tag2Name}"></li></a>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- ▲　共通 レシピを探す ▲ -->
+</body>
+</html>

@@ -3,23 +3,67 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.dao.TagMapper">
-<select id="getTopTenTags" resultType="com.example.entity.Tag">
-SELECT t.id as id, t.tag_name as tag_name
-FROM (
-    SELECT tag_1 AS tag_id FROM recipe WHERE tag_1 IS NOT NULL
-    UNION ALL
-    SELECT tag_2 FROM recipe WHERE tag_2 IS NOT NULL
-    UNION ALL
-    SELECT tag_3 FROM recipe WHERE tag_3 IS NOT NULL
-    UNION ALL
-    SELECT tag_4 FROM recipe WHERE tag_4 IS NOT NULL
-    UNION ALL
-    SELECT tag_5 FROM recipe WHERE tag_5 IS NOT NULL
-) r
-JOIN tag t ON t.id = r.tag_id
-GROUP BY t.id, t.tag_name
-ORDER BY COUNT(*) DESC
-LIMIT 10;
+<select id="getTopTenTags" resultType="com.example.entity.Tag1">
+SELECT
+  t1.id,
+  t1.tag1_name
+FROM tag1 t1
+LEFT OUTER JOIN recipe_tag rt ON t1.id = rt.tag1_id
+GROUP BY rt.tag1_id, t1.id, t1.tag1_name
+ORDER BY count(rt.tag1_id) DESC
+LIMIT 12;
 </select>
+
+<select id="getTag1NoUsed" resultType="Integer">
+select 
+  t1.id
+from tag1 t1
+where not EXISTS(
+  select 
+  rt.tag1_id
+  from recipe_tag rt
+  where rt.tag1_id = t1.id
+)
+</select>
+
+<update id="updateAllTag1DisplayTrue">
+  UPDATE tag1
+  SET display_flg = true;
+</update>
+
+<update id="updateTag1Display">
+  UPDATE tag1
+  SET display_flg = false
+  WHERE id IN
+  <foreach collection="tag1NoUsedIds" item="id" open="(" separator="," close=")">
+    #{id}
+  </foreach>
+</update>
+
+<select id="getTag2NoUsed" resultType="Integer">
+select 
+  t2.id
+from tag2 t2
+where not EXISTS(
+  select 
+  rt.tag2_id
+  from recipe_tag2 rt
+  where rt.tag2_id = t2.id
+)
+</select>
+
+<update id="updateAllTag2DisplayTrue">
+  UPDATE tag2
+  SET display_flg = true;
+</update>
+
+<update id="updateTag2Display">
+  UPDATE tag2
+  SET display_flg = false
+  WHERE id IN
+  <foreach collection="tag2NoUsedIds" item="id" open="(" separator="," close=")">
+    #{id}
+  </foreach>
+</update>
 
 </mapper>

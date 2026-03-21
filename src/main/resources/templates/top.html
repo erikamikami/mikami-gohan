@@ -47,6 +47,28 @@
 
   <div class="container">
     <main>
+    
+    <!-- おすすめレシピ -->
+    <div class="lets_today_cook">
+      <img alt="" src="/img/fukidashi/ichioshi_recipe_opne.png">
+    </div>
+    <div class="recommend_recipe_header">
+      <img src="/img/fork_knife.png" >
+      <p>おすすめレシピ<p>
+    </div>
+    <div>
+      <ul class="recommend_recipe_ul">
+        <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+          <a th:href="@{/recipe/} + ${recipe.idString}">
+            <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    
+    <!-- レシピを探す -->
+    <div th:insert="common/search_recipe::frag_search_recipe"></div>
+    
     <!-- 人気のタグ一覧 -->
     <div>
       <div class="tag_header">
@@ -55,14 +77,14 @@
           <p class="popular_tag_head">人気のタグ一覧</p>
         </div>
         <div>
-          <img alt="" src="/img/what_should_we_have_today.png">
+          <img alt="" src="/img/fukidashi/check_trend.png">
         </div>
       </div>
       <div class="tag_contents">
         <div class="tag_list">
           <div class="tag_list_detail" >
             <div class="tag_list_detail_child" th:each="tag : ${popularTags}">
-              <a th:href="'/search?tag=' + ${tag.tagName}" th:text="'#' + ${tag.tagName}"></a>
+              <a th:href="'/search?tag=' + ${tag.tag1Name}" th:text="'#' + ${tag.tag1Name}"></a>
             </div>
           </div>
         </div>
@@ -71,19 +93,6 @@
 
     <!-- おすすめレシピ -->
     <div class="content">
-      <div class="recommend_recipe_header">
-        <img src="/img/fork_knife.png" >
-        <p>おすすめレシピ<p>
-      </div>
-      <div>
-        <ul class="recommend_recipe_ul">
-          <li class="recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
-            <a th:href="@{/recipe/} + ${recipe.idString}">
-              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
-            </a>
-          </li>
-        </ul>
-      </div>
       <div class="btn">
         <a class="btn_link" th:href="@{/search}"> 検索一覧 <i class="fas fa-long-arrow-alt-right"></i>
         </a>
@@ -104,5 +113,6 @@
       </div>
     </aside>
     </div>
+  <script th:src="@{/js/top/top.js}"></script>
   </th:block>
 </div>

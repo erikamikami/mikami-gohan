@@ -12,6 +12,21 @@
 	padding: 8px;
 }
 
+.tag_all{
+	margin: 30px 0 50px 0;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+	padding: 13px;
+}
+
+.tag_all>h2{
+	margin: 10px 0 15px 5px;
+}
+
+.tag_all>h2>img{
+  margin-right: 5px;
+}
+
 .tag_names {
 	padding: 0 10px 10px;
 	display: flex;

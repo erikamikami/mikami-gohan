@@ -67,22 +67,27 @@
       <!-- ページング -->
       <div th:if="${searchRecipe.pages >= 1}">
         <div class="paging">
+
           <div th:if="${searchRecipe.hasPreviousPage and searchRecipe.pages > 2}" class="paging_column">
-            <a th:href="@{|?page=1|}">&lt;&lt;</a>
+            <a th:href="@{|/search?page=1${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}">&lt;&lt;</a>
           </div>
+
           <div th:if="${searchRecipe.hasPreviousPage}" class="paging_column">
-            <a th:href="@{|?page=${searchRecipe.pageNum - 1}|}">&lt;</a>
+            <a th:href="@{|/search?page=${searchRecipe.pageNum - 1}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}">&lt;</a>
           </div>
+
           <div th:each="i : ${#numbers.sequence(1, searchRecipe.pages)}" th:classappend="${i} == ${searchRecipe.pageNum} ? 'now' : ''" class="paging_column">
-            <a th:href="@{|?page=${i}|}" th:text="${i}">1</a>
+            <a th:href="@{|/search?page=${i}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}" th:text="${i}">1</a>
           </div>
+
           <div th:if="${searchRecipe.hasNextPage}" class="paging_column">
-            <a th:href="@{|?page=${searchRecipe.pageNum + 1}|}">&gt;</a>
+            <a th:href="@{|/search?page=${searchRecipe.pageNum + 1}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}">&gt;</a>
           </div>
-          <div th:if="${searchRecipe.hasNextPage and searchRecipe.pages > 2}"  class="paging_column">
-            <a th:href="@{|?page=${searchRecipe.navigateLastPage}|}">&gt;&gt;</a>
+
+          <div th:if="${searchRecipe.hasNextPage and searchRecipe.pages > 2}" class="paging_column">
+            <a th:href="@{|/search?page=${searchRecipe.navigateLastPage}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}">&gt;&gt;</a>
           </div>
-          
+
         </div>
       </div>
     </main>
@@ -96,7 +101,7 @@
         </div>
         <div class="tag_names">
           <div class="tag_name" th:each="tag : ${recommendTags}">
-            <a th:href="'/search?tag=' + ${tag.tagName}" th:text="'#' + ${tag.tagName}"></a>
+            <a th:href="'/search?tag=' + ${tag.tag1Name}" th:text="'#' + ${tag.tag1Name}"></a>
           </div>
         </div>
       </div>

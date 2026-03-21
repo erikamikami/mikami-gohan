@@ -38,9 +38,19 @@ public class CacheConfig {
                 .maximumSize(1000)
                 .build()
         );
+    
+    // 24時間キャッシュ
+    CaffeineCache twentyFourHourCache =
+        new CaffeineCache(
+            "twentyFourHourCache",
+            Caffeine.newBuilder()
+                .expireAfterWrite(24, TimeUnit.HOURS)
+                .maximumSize(1000)
+                .build()
+        );
 
     SimpleCacheManager cacheManager = new SimpleCacheManager();
-    cacheManager.setCaches(List.of(oneMinuteCache, oneHourCache));
+    cacheManager.setCaches(List.of(oneMinuteCache, oneHourCache, twentyFourHourCache));
     return cacheManager;
   }
 }

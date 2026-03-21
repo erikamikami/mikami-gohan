@@ -27,16 +27,6 @@ select id, id_string, title from recipe where display_flg = true order by random
     <result property="title" column="title"/>
     <result property="memo" column="memo"/>
     <result property="createdDate" column="created_date"/>
-    <result property="tag1" column="tag_1" />
-    <result property="tag1Name" column="tag1_name"/>
-    <result property="tag2" column="tag_2" />
-    <result property="tag2Name" column="tag2_name"/>
-    <result property="tag3" column="tag_3" />
-    <result property="tag3Name" column="tag3_name"/>
-    <result property="tag4" column="tag_4" />
-    <result property="tag4Name" column="tag4_name"/>
-    <result property="tag5" column="tag_5" />
-    <result property="tag5Name" column="tag5_name"/>
     
     <association property="howTo" javaType="com.example.entity.HowTo">
       <result property="howToNo1" column="how_to_no1"/>
@@ -51,9 +41,20 @@ select id, id_string, title from recipe where display_flg = true order by random
       <result property="howToNo10" column="how_to_no10"/>
     </association>
     
+    
     <association property="meta" javaType="com.example.entity.Meta">
       <result property="description" column="description"/>
     </association>
+    
+    <collection property="tag1" ofType="com.example.entity.Tag1" javaType="java.util.ArrayList">
+      <id property="id" column="tag1_id"/>
+      <result property="tag1Name" column="tag1_name"/>
+    </collection>
+    
+    <collection property="tag2" ofType="com.example.entity.Tag2" javaType="java.util.ArrayList">
+        <id property="id" column="tag2_id"/>
+        <result property="tag2Name" column="tag2_name"/>
+    </collection>
     
     <collection property="materials" ofType="com.example.entity.Material">
       <id property="id" column="matelial_id"/>
@@ -69,11 +70,10 @@ select
   r.title, 
   r.memo, 
   r.created_date,
-  t1.tag_name AS tag1_name, 
-  t2.tag_name AS tag2_name, 
-  t3.tag_name AS tag3_name, 
-  t4.tag_name AS tag4_name, 
-  t5.tag_name AS tag5_name,
+  t1.id AS tag1_id,
+  t1.tag1_name,
+  t2.id AS tag2_id,
+  t2.tag2_name,
   m.id AS matelial_id,
   m.material_name,
   h.how_to_no1, 
@@ -88,17 +88,17 @@ select
   h.how_to_no10,
   me.description
 from recipe r
-left outer join tag t1 on r.tag_1 = t1.id 
-left outer join tag t2 on r.tag_2 = t2.id 
-left outer join tag t3 on r.tag_3 = t3.id 
-left outer join tag t4 on r.tag_4 = t4.id 
-left outer join tag t5 on r.tag_5 = t5.id 
+left outer join recipe_tag rt on r.id = rt.recipe_id
+left outer join tag1 t1 on rt.tag1_id = t1.id
+left outer join recipe_tag2 rt2 on r.id = rt2.recipe_id
+left outer join tag2 t2 on rt2.tag2_id = t2.id
 left outer join material m on r.id = m.recipe_id
 left outer join how_to h on r.id = h.recipe_id
 left outer join meta me on r.id = me.recipe_id
 where r.id_string = #{idString}
 and r.display_flg = true
-order by m.sort_order
+order by 
+  m.sort_order, t1.sort_order, t2.sort_order 
 ;
 </select>
 
@@ -132,23 +132,19 @@ order by r.created_date DESC
 
 <select id="searchByTagName" resultType="com.example.entity.Recipe" parameterType="map">
 select 
-  r.id,
+  DISTINCT r.id,
   r.id_string,
   r.title,
   r.created_date
 from recipe r
-left outer join tag t1 on r.tag_1 = t1.id and t1.display_flg = true
-left outer join tag t2 on r.tag_2 = t2.id and t2.display_flg = true
-left outer join tag t3 on r.tag_3 = t3.id and t3.display_flg = true
-left outer join tag t4 on r.tag_4 = t4.id and t4.display_flg = true
-left outer join tag t5 on r.tag_5 = t5.id and t5.display_flg = true
+left outer join recipe_tag rt on r.id = rt.recipe_id
+left outer join tag1 t1 on rt.tag1_id = t1.id
+left outer join recipe_tag2 rt2 on r.id = rt2.recipe_id
+left outer join tag2 t2 on rt2.tag2_id = t2.id
 where 
   <foreach collection="tags" item="tag" separator=" OR ">
-  t1.tag_name like CONCAT('%', #{tag}, '%')
-  or t2.tag_name like CONCAT('%', #{tag}, '%')
-  or t3.tag_name like CONCAT('%', #{tag}, '%')
-  or t4.tag_name like CONCAT('%', #{tag}, '%')
-  or t5.tag_name like CONCAT('%', #{tag}, '%')
+  t1.tag1_name like CONCAT('%', #{tag}, '%')
+  or t2.tag2_name like CONCAT('%', #{tag}, '%')
   </foreach>
 order by r.created_date DESC
 </select>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.CategoryMapper">
+
+<resultMap id="tagsByCategoryMap" type="com.example.entity.Category">
+    <id property="id" column="category_id"/>
+    <result property="categoryName" column="category_name"/>
+    
+    <!-- Category の中の Tag1 リスト -->
+    <collection property="tag1List" ofType="com.example.entity.Tag1" javaType="java.util.ArrayList">
+        <id property="id" column="tag1_id"/>
+        <result property="tag1Name" column="tag1_name"/>
+        
+        <!-- Tag1 の中の Tag2 -->
+        <collection property="tag2List" ofType="com.example.entity.Tag2" javaType="java.util.ArrayList">
+            <id property="id" column="tag2_id"/>
+            <result property="tag2Name" column="tag2_name"/>
+        </collection>
+    </collection>
+</resultMap>
+<select id="getTagsByCategory" resultMap="tagsByCategoryMap">
+SELECT
+  c.id AS category_id,
+  c.category_name,
+  t1.id AS tag1_id,
+  t1.tag1_name,
+  t2.id AS tag2_id,
+  t2.tag2_name
+FROM category c
+LEFT OUTER JOIN category_tag ct 
+  ON c.id = ct.category_id
+LEFT OUTER JOIN tag1 t1 
+  ON ct.tag1_id = t1.id
+  AND t1.display_flg = TRUE
+LEFT OUTER JOIN tag2 t2 
+  ON t1.id = t2.tag1_id
+  AND t2.display_flg = TRUE
+ORDER BY c.sort_order, t1.sort_order, t2.sort_order;
+</select>
+
+</mapper>

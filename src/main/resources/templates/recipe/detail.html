@@ -21,7 +21,7 @@
   "@type": "Recipe",
   "name": "[[${recipe.title}]]",
   "description": "<th:block th:if="${recipe.meta != null and recipe.meta.description != null and recipe.meta.description != ''}">[[${recipe.meta.description}]]</th:block>",
-  "keywords": "<th:block th:each="tagName, iterStat : ${recipe.tagNameList.?[#this != null and #this != '']}">[[${tagName}]]<th:block th:if="${!iterStat.last}">,</th:block></th:block>",
+  "keywords": " <th:block th:each="tag1, iterStat : ${recipe.tag1}">[[${tag1.tag1Name}]]<th:block th:if="${!iterStat.last}">,</th:block></th:block>",
   "datePublished": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",
   "dateModified": "[[${#dates.format(recipe.createdDate,'yyyy-MM-dd')}]]",
   "recipeYield": "4人分",
@@ -84,14 +84,24 @@
         <div class="recipe_name">
           <h1 th:text="${recipe.title}">料理名</h1>
         </div>
-        <!-- タグ -->
-        <div class="tag_names">
-          <div class="tag_name"
-            th:each="tagName, iterStat : ${recipe.tagNameList}"
-            th:if="${tagName != null and tagName != ''}">
-            <a th:href="'/search?tag=' + ${tagName}"
-              th:text="'#' + ${tagName}">#タグ名</a>
-          </div>
+      </div>
+      
+      <!-- 主要タグ 最大７個 -->
+      <div class="tag_names">
+        <div class="tag_name" th:each="tag1, stat : ${recipe.tag1}" th:if="${stat.index < 6}">
+          <a th:class="${tag1.id}" th:href="'/search?tag=' + ${tag1.tag1Name}" th:text="'#' + ${tag1.tag1Name}">#タグ名</a>
+        </div>
+      </div>
+      
+      
+      <!-- メモ -->
+      <div class="contents" th:if="${recipe.memo != null and recipe.memo != ''}">
+        <div class="memo_head">
+          <img alt="" src="/img/pen.png">
+          <h2>memo</h2>
+        </div>
+        <div>
+          <p th:text="${recipe.memo}">メモテキスト</p>
         </div>
       </div>
 
@@ -109,16 +119,7 @@
         </div>
       </div>
 
-      <!-- メモ -->
-      <div class="contents" th:if="${recipe.memo != null and recipe.memo != ''}">
-        <div class="memo_head">
-          <img alt="" src="/img/pen.png">
-          <h2>memo</h2>
-        </div>
-        <div>
-          <p th:text="${recipe.memo}">メモテキスト</p>
-        </div>
-      </div>
+
 
       <!-- 作り方 -->
       <div th:if="${recipe.howTo != null and recipe.howTo != ''}" class="contents">
@@ -137,6 +138,22 @@
           </div>
         </div>
       </div>
+      
+      <!-- タグ全部 -->
+      <div class="tag_all">
+        <h2><img class="popular_tag_head" alt="" src="/img/flg_icon.png" style="left: 8px"><span>このレシピのタグ一覧</span></h2>
+        <div class="tag_names">
+          <div class="tag_name" th:each="tag1 : ${recipe.tag1}">
+            <a th:class="${tag1.id}" th:href="'/search?tag=' + ${tag1.tag1Name}" th:text="'#' + ${tag1.tag1Name}">#タグ名</a>
+          </div>
+          <div class="tag_name" th:each="tag2 : ${recipe.tag2}">
+            <a th:class="${tag2.id}" th:href="'/search?tag=' + ${tag2.tag2Name}" th:text="'#' + ${tag2.tag2Name}">#タグ名</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- レシピを探す -->
+      <div th:insert="common/search_recipe::frag_search_recipe"></div>
     </main>
     <!-- サイドバー -->
     <aside>

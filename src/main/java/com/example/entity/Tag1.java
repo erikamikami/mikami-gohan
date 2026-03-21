@@ -1,5 +1,7 @@
 package com.example.entity;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,12 +13,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Tag {
+public class Tag1 {
   
   private Integer id;
-  private String tagName;
+  private String tag1Name;
+  private List<Tag2> tag2List;
+  private Category category;
   private Integer sortOrder;
   private boolean displayFlg;
-  private String createDate;
 
 }

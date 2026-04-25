@@ -96,11 +96,48 @@
 	width: 49%;
 }
 
+.recommend_recipe2_ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding-left: 0;
+  font-size: 13px;
+}
+
+.recommend_recipe2_li {
+  width: 32%;
+  padding-left: 10px;
+}
+
+.recommend_recipe2_header {
+  font-size: 22px;
+  border-bottom: 1px dotted #9696a0;
+  margin-bottom: 10px;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.recommend_recipe2_header p {
+  margin: 0 0 10px 12px;
+}
+
+.recommend_recipe2_header img {
+  margin-left: 7px;
+}
+
 @media screen and (max-width: 990px) { /* 990px以下に適用されるCSS（スマホ用） */
 	.container {
 		flex-direction: column; /* スマホでは縦並び */
 	}
+	
+	.recommend_recipe2_li {
+    width: 32%;
+  }
 }
 
 @media screen and (max-width: 481px) { /* 481px以下に適用されるCSS（スマホ用） */
+
+  .recommend_recipe2_li {
+    width: 49%;
+  }
 }

@@ -13,6 +13,8 @@ import com.example.entity.Recipe;
 import com.example.service.CategoryService;
 import com.example.service.RecipeService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @Controller
 @RequestMapping("/recipe")
 public class RecipeController {
@@ -24,7 +26,7 @@ public class RecipeController {
   private CategoryService categoryService;
 
   @RequestMapping("{idString}")
-  public String detail(@PathVariable("idString") String idString, Model model) {
+  public String detail(@PathVariable("idString") String idString, Model model, HttpServletRequest request) {
     // レシピ詳細 取得
     Recipe recipe = recipeService.getRecipeById(idString);
     if (recipe == null) {
@@ -32,13 +34,25 @@ public class RecipeController {
     }
     model.addAttribute("recipe", recipe);
     
+    // UA判定
+    String ua = request.getHeader("User-Agent");
+    boolean isMobile = ua != null && (
+        ua.contains("iPhone") ||
+        ua.contains("Android") && ua.contains("Mobile")
+    );
+    model.addAttribute("isMobile", isMobile);
+    
     // 検索用カテゴリー取得
     List<Category> categoryList = categoryService.getTagsByCategory();
     model.addAttribute("categoryList", categoryList);
     
     // おすすめのレシピ取得
-    List<Recipe> recommendRecipe = recipeService.getRandomRecipeLimitTwelve();
+    List<Recipe> recommendRecipe = recipeService.getReccomendRecipeForRecipeDetail(recipe);
     model.addAttribute("recommendRecipe", recommendRecipe);
+    
+    // おすすめのレシピ2取得
+    List<Recipe> recommendRecipe2 = recipeService.getRandomRecipeLimitTwelve();
+    model.addAttribute("recommendRecipe2", recommendRecipe2);
     
     return "recipe/detail";
   }

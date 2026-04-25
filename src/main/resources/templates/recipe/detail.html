@@ -152,6 +152,26 @@
         </div>
       </div>
       
+      <!-- おすすめ -->
+      <div class="recommend_recipe2_header">
+        <img src="/img/fork_knife.png" >
+        <p th:text="${isMobile} ? 'おすすめ！関連レシピ' : 'こちらもおすすめ'"><p>
+      </div>
+      <div>
+        <ul class="recommend_recipe2_ul">
+          <li th:if="${isMobile}" class="recommend_recipe2_li" th:each="recipe : ${recommendRecipe}">
+            <a th:href="@{/recipe/} + ${recipe.idString}">
+              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
+            </a>
+          </li>
+          <li th:unless="${isMobile}" class="recommend_recipe2_li" th:each="recipe : ${recommendRecipe2}">
+            <a th:href="@{/recipe/} + ${recipe.idString}">
+              <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
       <!-- レシピを探す -->
       <div th:insert="common/search_recipe::frag_search_recipe"></div>
     </main>
@@ -168,14 +188,20 @@
         </div>
       </div>
 
-      <!-- おすすめレシピ -->
+      <!-- おすすめ -->
       <div class="aside_content">
         <div>
-          <h4>こちらもおすすめ</h4>
+          <h4 th:text="${isMobile} ? 'こちらもおすすめ' : 'おすすめ！関連レシピ'"></h4>
         </div>
         <div>
           <ul class="aside_recommend_recipe_ul">
-            <li class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+            <li th:unless="${isMobile}" class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe}">
+              <a th:href="@{/recipe/} + ${recipe.idString}">
+                <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
+                <span th:text="${recipe.title}">料理名</span>
+              </a>
+            </li>
+            <li th:if="${isMobile}" class="aside_recommend_recipe_li" th:each="recipe : ${recommendRecipe2}">
               <a th:href="@{/recipe/} + ${recipe.idString}">
                 <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'">
                 <span th:text="${recipe.title}">料理名</span>

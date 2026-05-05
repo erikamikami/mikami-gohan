@@ -5,7 +5,7 @@
 <meta property="og:title" th:content="${articleDetails[0].article.title + ' | みかみごはん'}" />
 <meta property="og:type" content="website" />
 <meta property="og:url" th:content="'https://mikami-gohan.com/article/' + ${articleDetails[0].article.uniqueString}" />
-<meta property="og:image" th:content="'/img/article/' + ${articleDetails[0].article.uniqueString}" />
+<meta property="og:image" th:content="'/img/article/' + ${articleDetails[0].article.uniqueString} + '.jpg'" />
 <meta property="og:description" th:content="${articleDetails[0].article.introduction}" />
 <meta property="og:site_name" content="みかみごはん" />
 <meta property="og:locale" content="ja_JP" />

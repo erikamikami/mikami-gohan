@@ -55,8 +55,8 @@
       
       <!-- 検索結果 -->
       <div th:if="${searchRecipe.list.size() >= 1}">
-        <ul class="search_recipe_ul">
-          <li class="search_recipe_li" th:each="recipe : ${searchRecipe.list}">
+        <ul class="search_result_recipe_ul">
+          <li class="search_result_recipe_li" th:each="recipe : ${searchRecipe.list}">
             <a th:href="@{/recipe/} + ${recipe.idString}">
               <img alt="" th:src="@{/img/recipe/} + ${recipe.id} + '.jpg'"><span th:text="${recipe.title}">料理名</span>
             </a>
@@ -75,8 +75,9 @@
           <div th:if="${searchRecipe.hasPreviousPage}" class="paging_column">
             <a th:href="@{|/search?page=${searchRecipe.pageNum - 1}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}">&lt;</a>
           </div>
-
-          <div th:each="i : ${#numbers.sequence(1, searchRecipe.pages)}" th:classappend="${i} == ${searchRecipe.pageNum} ? 'now' : ''" class="paging_column">
+          
+          <div th:each="i : ${#numbers.sequence(1, searchRecipe.pages)}" th:if="${i >= searchRecipe.pageNum - 2 and i <= searchRecipe.pageNum + 2}"
+          th:classappend="${i == searchRecipe.pageNum ? 'now' : ''}" class="paging_column">
             <a th:href="@{|/search?page=${i}${keyword != null ? '&keyword=' + keyword : ''}${tag != null ? '&tag=' + #strings.listJoin(tag, '&tag=') : ''}|}" th:text="${i}">1</a>
           </div>
 
@@ -90,6 +91,8 @@
 
         </div>
       </div>
+      <!-- レシピを探す -->
+      <div th:insert="common/search_recipe::frag_search_recipe"></div>
     </main>
     
     <!-- サイドバー -->

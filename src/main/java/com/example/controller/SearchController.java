@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.entity.Category;
 import com.example.entity.Recipe;
 import com.example.entity.Tag1;
+import com.example.service.CategoryService;
 import com.example.service.RecipeService;
 import com.example.service.TagService;
 import com.github.pagehelper.PageInfo;
@@ -24,6 +26,9 @@ public class SearchController {
   
   @Autowired
   private TagService tagService;
+  
+  @Autowired
+  private CategoryService categoryService;
 
   @RequestMapping("")
   public String search(
@@ -38,6 +43,10 @@ public class SearchController {
     // おすすめタグの取得
     List<Tag1> recommendTags = tagService.getTopTenTags();
     model.addAttribute("recommendTags", recommendTags);
+    
+    // 検索用カテゴリー取得
+    List<Category> categoryList = categoryService.getTagsByCategory();
+    model.addAttribute("categoryList", categoryList);
     
     // 検索窓への入力があった場合
     if (keyword != null && keyword != "") {

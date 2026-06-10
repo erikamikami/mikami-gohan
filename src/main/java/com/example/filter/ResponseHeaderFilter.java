@@ -20,7 +20,7 @@ public class ResponseHeaderFilter implements Filter {
 
       HttpServletResponse res = (HttpServletResponse) response;
       res.setHeader("Cache-Control", "public, max-age=3600");
-      //res.setHeader("Strict-Transport-Security","max-age=31536000; includeSubDomains");
+      res.setHeader("Strict-Transport-Security","max-age=31536000; includeSubDomains");
       res.setHeader("X-Content-Type-Options", "nosniff");
       res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
 
